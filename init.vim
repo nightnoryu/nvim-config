@@ -642,7 +642,7 @@ let g:user_emmet_install_global = 0
 let g:user_emmet_leader_key = '<C-z>'
 augroup emmet
   autocmd!
-  autocmd FileType html,css,pug,html.twig.js.css,php EmmetInstall
+  autocmd FileType html,css,pug EmmetInstall
 augroup END
 " }}}
 
