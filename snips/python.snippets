@@ -1,0 +1,23 @@
+snippet env "Environment comment" b
+#!/usr/bin/env python3
+endsnippet
+
+snippet h "Comment header" b
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# ${1:${VISUAL}}
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+endsnippet
+
+snippet ifmain "If-main script base" b
+def main():
+    ${2:pass}
+
+
+# Entry point
+if __name__ == "__main__":
+    try:
+        ${1:main()}
+    except KeyboardInterrupt:
+        print("\nUser interrupt", file=sys.stderr)
+        sys.exit(1)
+endsnippet

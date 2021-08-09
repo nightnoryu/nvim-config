@@ -1,0 +1,4 @@
+snippet target "Makefile target" b
+${1:target_name}: ${2:dependencies}
+	$(CC) $(CFLAGS) ${3:-c} -o $@ $+
+endsnippet

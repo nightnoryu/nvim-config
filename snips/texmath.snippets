@@ -1,0 +1,85 @@
+# Heavily inspired by:
+# https://castel.dev/post/lecture-notes-1/
+
+snippet mk "Inline math" w
+\\(${1:${VISUAL}}\\)
+endsnippet
+
+snippet dm "Display math" w
+\\[
+  $1
+\\]
+endsnippet
+
+snippet sub "Subscript" i
+_\{$1\}
+endsnippet
+
+snippet sup "Superscript" i
+^\{$1\}
+endsnippet
+
+snippet sqrt "Square root" i
+\\sqrt\{$1\}
+endsnippet
+
+snippet "(\d|\w)root" "N-th root" rw
+\\sqrt[`!p snip.rv = match.group(1)`]\{$1\}
+endsnippet
+
+snippet "((\(\))|(\[\])|({}))d" "Dynamic brackets" rw
+\\left`!p snip.rv = ('\\' if match.group(1)[0] == '{' else '') + match.group(1)[0]` ${1:${VISUAL}} \\right`!p snip.rv = ('\\' if match.group(1)[1] == '}' else '') + match.group(1)[1]`
+endsnippet
+
+snippet // "Simple fraction" i
+\\frac\{${1:${VISUAL}}\}\{$2\}
+endsnippet
+
+snippet "^.*\)/" "Fraction from parentheses" rw
+`!p
+stripped = match.string[:-1]
+depth = 0
+i = len(stripped) - 1
+while True:
+	if stripped[i] == ')':
+		depth += 1
+	if stripped[i] == '(':
+		depth -= 1
+	if depth == 0:
+		break;
+	i -= 1
+snip.rv = stripped[:i] + "\\frac{" + stripped[i+1:-1] + "}"
+`\{$1\}$0
+endsnippet
+
+snippet lim "Limit" i
+\\lim_\{${1:x\\to\\infty}\}$2
+endsnippet
+
+snippet sum "Algebraic sum" i
+\\sum_\{${1:n=1}\}^\{${2:\\infty}\}$3
+endsnippet
+
+snippet int "Undefined integral" i
+\\int $0
+endsnippet
+
+snippet intd "Defined integral" i
+\\int\\limits_\{$1\}^\{$2\} $0
+endsnippet
+
+snippet eval "Expression evaluation line" i
+\\left. $1 \\right|$0
+endsnippet
+
+snippet bb "Number set letter" i
+\\mathbb\{${1:Q}\}
+endsnippet
+
+snippet fr "Gothic letter" i
+\\mathfrak\{${1:F}\}
+endsnippet
+
+snippet txt "Text in equations" i
+\\text\{${1:${VISUAL}}\}
+endsnippet
