@@ -40,12 +40,12 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " Project management
-Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-rhubarb', { 'on': 'GBrowse' }
 Plug 'junegunn/gv.vim', { 'on': 'GV' }
 Plug 'airblade/vim-rooter', { 'on': 'Rooter' }
+Plug 'preservim/nerdtree', { 'on': ['NERDTree', 'NERDTreeToggle', 'NERDTreeFind'] }
 
 " Editing
 Plug 'tpope/vim-commentary'
