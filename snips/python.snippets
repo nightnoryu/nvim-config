@@ -10,13 +10,12 @@ endsnippet
 
 snippet ifmain "If-main script base" b
 def main():
-    ${2:pass}
+    ${0:pass}
 
 
-# Entry point
 if __name__ == "__main__":
     try:
-        ${1:main()}
+        main()
     except KeyboardInterrupt:
         print("\nUser interrupt", file=sys.stderr)
         sys.exit(1)
