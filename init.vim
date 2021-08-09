@@ -61,6 +61,7 @@ Plug 'tpope/vim-dispatch', { 'on': ['Make', 'Dispatch'] }
 Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'LiveEasyAlign'] }
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
 Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
+Plug 'tyru/open-browser.vim', { 'on': '<Plug>(openbrowser-smart-search)' }
 
 " Some colorschemes for alternating
 " Plug 'sainnhe/everforest'
@@ -628,6 +629,11 @@ nnoremap <silent> <leader>nF :NERDTreeFind<CR>
 if !exists('g:loaded_matchit')
   runtime! macros/matchit.vim
 endif
+" }}}
+
+" open-browser {{{
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
 " }}}
 
 " emmet-vim {{{
