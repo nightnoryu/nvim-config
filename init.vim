@@ -65,7 +65,6 @@ Plug 'tyru/open-browser.vim', { 'on': '<Plug>(openbrowser-smart-search)' }
 
 " Some colorschemes for alternating
 " Plug 'arcticicestudio/nord-vim'
-" Plug 'sainnhe/edge'
 " Plug 'sainnhe/gruvbox-material'
 " Plug 'sainnhe/sonokai'
 " Plug 'Jorengarenar/vim-darkness'
@@ -259,8 +258,6 @@ set conceallevel=0
 " Disable mouse wheel pasting
 nmap <MiddleMouse> <NOP>
 imap <MiddleMouse> <NOP>
-" Disable broken gx
-" nmap gx <NOP>
 " Change and delete to blackhole register
 nnoremap c "_c
 vnoremap c "_c
