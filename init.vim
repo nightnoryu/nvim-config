@@ -23,10 +23,9 @@ endif
 call plug#begin($VIMCONF . '/plugged')
 " Appearance
 Plug 'sainnhe/edge'
-Plug 'hoob3rt/lualine.nvim'
+Plug 'itchyny/lightline.vim'
 Plug 'mhinz/vim-startify'
 Plug 'sheerun/vim-polyglot'
-Plug 'ryanoasis/vim-devicons'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
@@ -430,61 +429,33 @@ command! Scratch
 let g:plug_window = 'noautocmd tabnew'
 " }}}
 
-" lualine {{{
-lua << EOF
-local colors = {
-  color5   = "#a0c980",
-  color6   = "#deb974",
-  color7   = "#6cb6eb",
-  color0   = "#c5cdd9",
-  color1   = "#33353f",
-  color2   = "#414550",
-  color3   = "#2c2e34",
-  color4   = "#ec7279",
-}
+" lightline {{{
+let g:lightline = {
+      \ 'colorscheme': 'edge',
+      \ 'mode_map': { 'c': 'NORMAL' },
+      \ 'active': {
+      \   'left': [ [ 'keymap', 'mode' ],
+      \             [ 'filename', 'gitbranch' ] ],
+      \ },
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \   'gitbranch': 'FugitiveHead',
+      \   'keymap': 'LightlineKeymap',
+      \ },
+      \ }
 
-local edge = {
-  visual = {
-    c = { fg = colors.color0, bg = colors.color1 },
-    b = { fg = colors.color0, bg = colors.color2 },
-    a = { fg = colors.color3, bg = colors.color4 , gui = "bold", },
-  },
-  normal = {
-    c = { fg = colors.color0, bg = colors.color1 },
-    b = { fg = colors.color0, bg = colors.color2 },
-    a = { fg = colors.color3, bg = colors.color5 , gui = "bold", },
-  },
-  inactive = {
-    c = { fg = colors.color0, bg = colors.color1 },
-    b = { fg = colors.color0, bg = colors.color1 },
-    a = { fg = colors.color0, bg = colors.color1 , gui = "bold", },
-  },
-  replace = {
-    c = { fg = colors.color0, bg = colors.color1 },
-    b = { fg = colors.color0, bg = colors.color2 },
-    a = { fg = colors.color3, bg = colors.color6 , gui = "bold", },
-  },
-  terminal = {
-    c = { fg = colors.color0, bg = colors.color1 },
-    b = { fg = colors.color0, bg = colors.color2 },
-    a = { fg = colors.color3, bg = colors.color5 , gui = "bold", },
-  },
-  command = {
-    c = { fg = colors.color0, bg = colors.color1 },
-    b = { fg = colors.color0, bg = colors.color2 },
-    a = { fg = colors.color3, bg = colors.color4 , gui = "bold", },
-  },
-  insert = {
-    c = { fg = colors.color0, bg = colors.color1 },
-    b = { fg = colors.color0, bg = colors.color2 },
-    a = { fg = colors.color3, bg = colors.color7 , gui = "bold", },
-  },
-}
+function! LightlineFilename() abort
+  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+  let modified = &modified ? ' +' : &modifiable ? '' : ' -'
+  return filename . modified
+endfunction
 
-require('lualine').setup{
-  options = { theme = edge }
-}
-EOF
+function! LightlineKeymap() abort
+  return &iminsert == 1 ? 'RU' : ''
+endfunction
+
+call lightline#init()
+call lightline#colorscheme()
 " }}}
 
 " UltiSnips {{{
