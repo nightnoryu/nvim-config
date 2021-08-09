@@ -3,8 +3,7 @@ set mouse=n
 
 " Font
 if exists(':GuiFont')
-  " GuiFont! Iosevka
-  GuiFont! FiraCode\ NF:h11
+  GuiFont! Iosevka:h11
 endif
 
 " Disable GUI popupmenu
