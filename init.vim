@@ -8,7 +8,7 @@
 
 " Config location {{{
 if has('win32')
-  let $VIMCONF = $HOME . '/AppData/Local/nvim'
+  let $VIMCONF = $LOCALAPPDATA . '/nvim'
 else
   let $VIMCONF = $HOME . '/.config/nvim'
 endif
@@ -245,8 +245,7 @@ set textwidth=0
 " Wrap text and break the lines by words
 set wrap linebreak
 " Proper indentation for wrapped lines
-set breakindent
-set breakindentopt=shift:2
+set breakindent breakindentopt=shift:2
 " Show line wrappings
 set showbreak=»
 " Always try to show paragraph's last line
