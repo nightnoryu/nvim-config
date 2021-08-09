@@ -436,20 +436,23 @@ let g:lightline = {
       \             [ 'filename', 'gitbranch' ] ],
       \ },
       \ 'component_function': {
+      \   'keymap': 'LightlineKeymap',
       \   'filename': 'LightlineFilename',
       \   'gitbranch': 'FugitiveHead',
-      \   'keymap': 'LightlineKeymap',
       \ },
       \ }
 
+function! LightlineKeymap() abort
+  return &iminsert == 1 ? 'RU' : ''
+endfunction
+
 function! LightlineFilename() abort
+  if &filetype ==# 'nerdtree'
+    return ''
+  endif
   let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
   let modified = &modified ? ' +' : &modifiable ? '' : ' -'
   return filename . modified
-endfunction
-
-function! LightlineKeymap() abort
-  return &iminsert == 1 ? 'RU' : ''
 endfunction
 
 call lightline#init()
