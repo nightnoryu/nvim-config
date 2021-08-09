@@ -22,15 +22,15 @@ endif
 
 call plug#begin($VIMCONF . '/plugged')
 " Appearance
-Plug 'sainnhe/edge'
+Plug 'sainnhe/everforest'
 Plug 'itchyny/lightline.vim'
 Plug 'mhinz/vim-startify'
-Plug 'sheerun/vim-polyglot'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'ray-x/lsp_signature.nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
 
 " Telescope
 Plug 'nvim-lua/plenary.nvim'
@@ -64,10 +64,10 @@ Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
 Plug 'tyru/open-browser.vim', { 'on': '<Plug>(openbrowser-smart-search)' }
 
 " Some colorschemes for alternating
-" Plug 'sainnhe/everforest'
+" Plug 'arcticicestudio/nord-vim'
+" Plug 'sainnhe/edge'
 " Plug 'sainnhe/gruvbox-material'
 " Plug 'sainnhe/sonokai'
-" Plug 'arcticicestudio/nord-vim'
 " Plug 'Jorengarenar/vim-darkness'
 " Plug 'ayu-theme/ayu-vim'
 call plug#end()
@@ -185,9 +185,7 @@ if has('termguicolors')
   set termguicolors
 endif
 set background=dark
-let g:edge_enable_italic = 0
-let g:edge_disable_italic_comment = 1
-colorscheme edge
+colorscheme everforest
 " Line numbering
 set number relativenumber
 " Show cursor position
@@ -431,7 +429,7 @@ let g:plug_window = 'noautocmd tabnew'
 
 " lightline {{{
 let g:lightline = {
-      \ 'colorscheme': 'edge',
+      \ 'colorscheme': 'everforest',
       \ 'mode_map': { 'c': 'NORMAL' },
       \ 'active': {
       \   'left': [ [ 'keymap', 'mode' ],
@@ -596,6 +594,20 @@ nnoremap <silent> <C-p> <cmd>Telescope find_files<CR>
 nnoremap <silent> <leader>fb <cmd>Telescope buffers<CR>
 nnoremap <silent> <leader>fg <cmd>Telescope live_grep<CR>
 nnoremap <silent> <leader>fh <cmd>Telescope help_tags<CR>
+" }}}
+
+" nvim-treesitter {{{
+lua << EOF
+require 'nvim-treesitter.install'.compilers = { "clang", "gcc" }
+require('nvim-treesitter.configs').setup {
+  ensure_installed = { 'python', 'c', 'cpp', 'lua', 'javascript' },
+  ignore_install = {},
+  highlight = {
+    enable = true,
+    disable = {}
+  },
+}
+EOF
 " }}}
 
 " NERDTree {{{
