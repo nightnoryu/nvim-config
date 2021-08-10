@@ -62,6 +62,8 @@ Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'LiveEasyAlign'] }
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
 Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
 Plug 'tyru/open-browser.vim', { 'on': '<Plug>(openbrowser-smart-search)' }
+Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
+Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 
 " Some colorschemes for alternating
 " Plug 'sainnhe/everforest'
@@ -644,6 +646,11 @@ if !exists('g:loaded_matchit')
 endif
 " }}}
 
+" writing (goyo + limelight) {{{
+autocmd! User GoyoEnter Limelight 0.7
+autocmd! User GoyoLeave Limelight!
+" }}}
+
 " open-browser {{{
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
@@ -653,10 +660,7 @@ vmap gx <Plug>(openbrowser-smart-search)
 let g:emmet_html5 = 0
 let g:user_emmet_install_global = 0
 let g:user_emmet_leader_key = '<C-z>'
-augroup emmet
-  autocmd!
-  autocmd FileType html,css,pug EmmetInstall
-augroup END
+autocmd settings FileType html,css,pug EmmetInstall
 " }}}
 
 " Git (fugitive + gitgutter) {{{
