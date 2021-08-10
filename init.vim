@@ -22,7 +22,7 @@ endif
 
 call plug#begin($VIMCONF . '/plugged')
 " Appearance
-Plug 'sainnhe/everforest'
+Plug 'sainnhe/sonokai'
 Plug 'itchyny/lightline.vim'
 Plug 'mhinz/vim-startify'
 
@@ -64,9 +64,9 @@ Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
 Plug 'tyru/open-browser.vim', { 'on': '<Plug>(openbrowser-smart-search)' }
 
 " Some colorschemes for alternating
+" Plug 'sainnhe/everforest'
 " Plug 'arcticicestudio/nord-vim'
 " Plug 'sainnhe/gruvbox-material'
-" Plug 'sainnhe/sonokai'
 " Plug 'Jorengarenar/vim-darkness'
 " Plug 'ayu-theme/ayu-vim'
 call plug#end()
@@ -184,7 +184,8 @@ if has('termguicolors')
   set termguicolors
 endif
 set background=dark
-colorscheme everforest
+let g:sonokai_style = 'atlantis'
+colorscheme sonokai
 " Line numbering
 set number relativenumber
 " Show cursor position
@@ -426,7 +427,7 @@ let g:plug_window = 'noautocmd tabnew'
 
 " lightline {{{
 let g:lightline = {
-      \ 'colorscheme': 'everforest',
+      \ 'colorscheme': 'sonokai',
       \ 'mode_map': { 'c': 'NORMAL' },
       \ 'active': {
       \   'left': [ [ 'keymap', 'mode' ],
