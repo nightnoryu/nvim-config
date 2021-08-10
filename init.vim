@@ -30,7 +30,7 @@ Plug 'mhinz/vim-startify'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'ray-x/lsp_signature.nvim'
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': 'TSUpdate' }
 
 " Telescope
 Plug 'nvim-lua/plenary.nvim'
@@ -137,7 +137,7 @@ set iskeyword+=-
 " Recursive :find in the current directory
 set path+=**
 " Less aggressive completion
-set completeopt=menuone,noinsert,noselect
+set completeopt=menuone,noselect
 " Don't display completion messages
 set shortmess+=c
 " Don't jump to matching pairs
@@ -577,7 +577,7 @@ require('telescope').setup {
       },
     },
 
-    file_ignore_patterns = { '.git', 'node_modules', '__pycache__', '.idea' }
+    file_ignore_patterns = { '.git', 'node_modules', '__pycache__', '.idea', 'var', 'vendor' }
   },
   extensions = {
     fzy_native = {
@@ -658,7 +658,7 @@ augroup emmet
 augroup END
 " }}}
 
-" Git plugins (fugitive + gitgutter) {{{
+" Git (fugitive + gitgutter) {{{
 nnoremap <silent> <leader>gg :Git<CR>
 nnoremap <silent> <leader>gh :diffget //2<CR>
 nnoremap <silent> <leader>gl :diffget //3<CR>
@@ -703,7 +703,7 @@ let g:startify_skiplist = [
       \ ]
 " }}}
 
-" Rooter {{{
+" vim-rooter {{{
 let g:rooter_manual_only = 1
 let g:rooter_cd_cmd = 'tcd'
 let g:rooter_change_directory_for_non_project_files = 'current'
