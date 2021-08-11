@@ -32,7 +32,7 @@ Plug 'hrsh7th/nvim-compe'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': 'TSUpdate' }
 
-" Telescope
+" Searching
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -55,6 +55,9 @@ Plug 'christoomey/vim-sort-motion'
 Plug 'cohama/lexima.vim'
 Plug 'SirVer/ultisnips'
 Plug 'mattn/emmet-vim', { 'on': 'EmmetInstall' }
+
+" Notes
+Plug 'vimwiki/vimwiki', { 'on': ['VimwikiIndex', 'VimwikiTabIndex'] }
 
 " Miscellaneous utilities
 Plug 'tpope/vim-dispatch', { 'on': ['Make', 'Dispatch'] }
@@ -646,7 +649,7 @@ if !exists('g:loaded_matchit')
 endif
 " }}}
 
-" writing (goyo + limelight) {{{
+" Writing (goyo + limelight) {{{
 autocmd! User GoyoEnter Limelight 0.7
 autocmd! User GoyoLeave Limelight!
 " }}}
@@ -697,10 +700,11 @@ let g:startify_bookmarks = [
       \ {'m': $APPDATA . '\mpv\mpv.conf'},
       \ ]
 let g:startify_commands = [
-    \ {'h': ['Quick reference', 'h quickref']},
-    \ {'u': ['Update plugins', 'PlugClean! | PlugUpdate']},
-    \ {'p': ['Go to projects', 'cd D:\Documents\Projects']}
-    \ ]
+      \ {'n': ['Notes', 'VimwikiIndex']},
+      \ {'u': ['Update plugins', 'PlugClean! | PlugUpdate']},
+      \ {'p': ['Go to projects', 'cd D:\Documents\Projects']},
+      \ {'h': ['Quick reference', 'h quickref']},
+      \ ]
 let g:startify_skiplist = [
       \ '\\\.git\\',
       \ 'runtime\\doc\\.*\.txt$',
@@ -718,6 +722,24 @@ let g:rooter_patterns = ['.git', 'node_modules', 'Makefile']
 " vim-easy-align {{{
 nmap gl <Plug>(EasyAlign)
 xmap gl <Plug>(EasyAlign)
+" }}}
+
+" vimwiki {{{
+let g:vimwiki_key_mappings = {
+      \   'all_maps': 1,
+      \   'global': 0,
+      \   'headers': 1,
+      \   'text_objs': 1,
+      \   'table_format': 1,
+      \   'table_mappings': 1,
+      \   'lists': 1,
+      \   'links': 1,
+      \   'html': 1,
+      \   'mouse': 0,
+      \ }
+let g:vimwiki_list = [{ 'name': 'Notes',
+      \ 'path': 'D:\Documents\Notes\',
+      \ 'syntax': 'markdown', 'ext': '.wiki' }]
 " }}}
 " }}}
 
