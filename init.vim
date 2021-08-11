@@ -734,12 +734,13 @@ let g:vimwiki_key_mappings = {
       \   'table_mappings': 1,
       \   'lists': 1,
       \   'links': 1,
-      \   'html': 1,
+      \   'html': 0,
       \   'mouse': 0,
       \ }
 let g:vimwiki_list = [{ 'name': 'Notes',
       \ 'path': 'D:\Documents\Notes\',
-      \ 'syntax': 'markdown', 'ext': '.wiki' }]
+      \ 'syntax': 'markdown', 'ext': '.wiki',
+      \ 'diary_rel_path': '_Diary\' }]
 " }}}
 " }}}
 
