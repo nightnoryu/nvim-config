@@ -141,7 +141,7 @@ set iskeyword+=-
 " Recursive :find in the current directory
 set path+=**
 " Less aggressive completion
-set completeopt=menuone,noselect
+set completeopt=menuone,noinsert,noselect
 " Don't display completion messages
 set shortmess+=c
 " Don't jump to matching pairs
@@ -493,7 +493,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 end
 
-local servers = { "clangd", "gopls", "tsserver", "jedi_language_server" }
+local servers = { "clangd", "gopls", "tsserver", "jedi_language_server", "gopls" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -585,7 +585,7 @@ nnoremap <silent> <leader>fh <cmd>Telescope help_tags<CR>
 lua << EOF
 require 'nvim-treesitter.install'.compilers = { "clang", "gcc" }
 require('nvim-treesitter.configs').setup {
-  ensure_installed = { 'python', 'c', 'cpp', 'lua', 'javascript' },
+  ensure_installed = { 'python', 'c', 'cpp', 'lua', 'javascript', 'go' },
   ignore_install = {},
   highlight = {
     enable = true,
