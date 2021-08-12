@@ -29,7 +29,6 @@ Plug 'mhinz/vim-startify'
 " LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
-Plug 'ray-x/lsp_signature.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': 'TSUpdate' }
 
 " Searching
@@ -262,8 +261,10 @@ set conceallevel=0
 
 " Mappings {{{
 " Disable mouse wheel pasting
-nmap <MiddleMouse> <NOP>
-imap <MiddleMouse> <NOP>
+nmap <MiddleMouse> <nop>
+imap <MiddleMouse> <nop>
+" Disable Ex mode
+nnoremap <silent> Q <nop>
 " Change and delete to blackhole register
 nnoremap c "_c
 vnoremap c "_c
@@ -475,16 +476,6 @@ let g:UltiSnipsSnippetDirectories = [$VIMCONF . '/snips']
 lua << EOF
 local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
-  require'lsp_signature'.on_attach({
-    bind = true,
-    doc_lines = 2,
-    hint_enable = false,
-    hint_prefix = '? ',
-    handler_opts = {
-        border = 'single'
-    }
-  })
-
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
@@ -526,32 +517,20 @@ require'compe'.setup {
   debug = false;
   min_length = 1;
   preselect = 'enable';
-  throttle_time = 50;
+  throttle_time = 80;
   source_timeout = 200;
-  resolve_timeout = 800;
   incomplete_delay = 400;
   max_abbr_width = 100;
   max_kind_width = 100;
   max_menu_width = 100;
-  documentation = {
-    border = { '', '' ,'', ' ', '', '', '', ' ' }, -- the border option is the same as `|help nvim_open_win|`
-    winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
-    max_width = 120,
-    min_width = 60,
-    max_height = math.floor(vim.o.lines * 0.3),
-    min_height = 1,
-  };
+  documentation = true;
 
   source = {
     path = true;
     buffer = true;
-    spell = true;
     calc = true;
-    emoji = true;
-
     nvim_lsp = true;
     nvim_lua = true;
-
     ultisnips = true;
   };
 }
@@ -801,12 +780,9 @@ augroup END " }}}
 augroup latex " {{{
   autocmd!
   autocmd FileType tex setlocal conceallevel=0
-  " Compile
-  autocmd FileType tex nnoremap <buffer> <silent> <leader>fc :up \| cd %:h \| !pdflatex "%"<CR>
-  " Preview pdf
-  autocmd FileType tex nnoremap <buffer> <silent> <leader>fp :!start "C:\Program Files\SumatraPDF\SumatraPDF.exe" "%:p:r.pdf"<CR><CR>
-  " Tidy up useless files
-  autocmd FileType tex nnoremap <buffer> <silent> <leader>ft :cd %:h \| Dispatch! latex-tidyup "%"<CR><CR>
+  autocmd FileType tex nnoremap <buffer> <silent> <leader>lc :up \| cd %:h \| Dispatch! pdflatex "%"<CR>
+  autocmd FileType tex nnoremap <buffer> <silent> <leader>lp :!start "C:\Program Files\SumatraPDF\SumatraPDF.exe" "%:p:r.pdf"<CR><CR>
+  autocmd FileType tex command! Tidyup cd %:h | Dispatch! latex-tidyup "%"
 augroup END " }}}
 
 augroup dosbatch " {{{
@@ -823,7 +799,7 @@ augroup pascal " {{{
   autocmd!
   " autocmd FileType pascal setlocal makeprg=gpc\ %\ -o\ %:t:r
   autocmd FileType pascal setlocal errorformat+=%f(%l\\,%c)\ %m,%-G%.%#
-  autocmd FileType pascal setlocal commentstring={%s}
+  autocmd FileType pascal setlocal commentstring={\ %s\ }
   autocmd FileType pascal command! FindExtraSemicolons execute 'vimgrep /\v;\n?\s*(<END>|<UNTIL>)/ **/*.pas'
 augroup END " }}}
 " }}}
