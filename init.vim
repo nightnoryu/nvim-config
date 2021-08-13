@@ -50,7 +50,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'wellle/targets.vim'
-Plug 'christoomey/vim-sort-motion'
 Plug 'cohama/lexima.vim'
 Plug 'SirVer/ultisnips'
 Plug 'mattn/emmet-vim', { 'on': 'EmmetInstall' }
