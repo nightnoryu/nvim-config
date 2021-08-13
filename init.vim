@@ -471,131 +471,15 @@ let g:UltiSnipsEditSplit = 'vertical'
 let g:UltiSnipsSnippetDirectories = [$VIMCONF . '/snips']
 " }}}
 
-" LSP {{{
+" Lua configurations {{{
 lua << EOF
-local nvim_lsp = require('lspconfig')
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  local opts = { noremap=true, silent=true }
-
-  buf_set_keymap('n', 'gla', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'glD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gld', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gli', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', 'gls', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', 'glt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', 'glr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', 'glR', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '[e',  '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']e',  '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-end
-
-local servers = { 'clangd', 'gopls', 'tsserver', 'pylsp', 'gopls' }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150
-    }
-  }
-end
+require('lsp_config')
+require('telescope_config')
+require('treesitter_config')
+require('compe_config')
 EOF
-
-command! Format execute 'lua vim.lsp.buf.formatting()'
 
 autocmd settings TextYankPost * silent! lua require'vim.highlight'.on_yank({ higroup = 'IncSearch', timeout = 50, on_visual = false })
-" }}}
-
-" nvim-compe {{{
-lua << EOF
-require'compe'.setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = true;
-
-  source = {
-    path = true;
-    buffer = true;
-    calc = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    ultisnips = true;
-  };
-}
-EOF
-
-let g:lexima_no_default_rules = v:true
-call lexima#set_default_rules()
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm(lexima#expand('<LT>CR>', 'i'))
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
-" }}}
-
-" Telescope {{{
-lua << EOF
-local actions = require('telescope.actions')
-require('telescope').setup {
-  defaults = {
-    file_sorter = require('telescope.sorters').get_fzy_sorter,
-    prompt_prefix = '$ ',
-
-    file_previewer = require('telescope.previewers').vim_buffer_cat.new,
-    grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
-    qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
-
-    mappings = {
-      i = {
-        ['<esc>'] = actions.close
-      },
-    },
-
-    file_ignore_patterns = { '.git', 'node_modules', '__pycache__', '.idea', 'var', 'vendor' }
-  },
-  extensions = {
-    fzy_native = {
-      override_generic_sorter = false,
-      override_file_sorter = true
-    }
-  }
-}
-require('telescope').load_extension('fzy_native')
-EOF
-
-nnoremap <silent> <C-p> <cmd>Telescope find_files<CR>
-
-nnoremap <silent> <leader>fb <cmd>Telescope buffers<CR>
-nnoremap <silent> <leader>fg <cmd>Telescope live_grep<CR>
-nnoremap <silent> <leader>fh <cmd>Telescope help_tags<CR>
-" }}}
-
-" nvim-treesitter {{{
-lua << EOF
-require 'nvim-treesitter.install'.compilers = { 'clang', 'gcc' }
-require('nvim-treesitter.configs').setup {
-  ensure_installed = { 'python', 'c', 'cpp', 'lua', 'javascript', 'go', 'latex' },
-  ignore_install = {},
-  highlight = {
-    enable = true,
-    disable = {}
-  },
-}
-EOF
 " }}}
 
 " NERDTree {{{
