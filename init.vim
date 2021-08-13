@@ -59,12 +59,12 @@ Plug 'vimwiki/vimwiki', { 'on': ['VimwikiIndex', 'VimwikiTabIndex'] }
 
 " Miscellaneous utilities
 Plug 'tpope/vim-dispatch', { 'on': ['Make', 'Dispatch'] }
-Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'LiveEasyAlign'] }
+Plug 'junegunn/vim-easy-align', { 'on': ['EasyAlign', 'LiveEasyAlign'] }
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
-Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
 Plug 'tyru/open-browser.vim', { 'on': '<Plug>(openbrowser-smart-search)' }
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
+Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
 
 " Some colorschemes for alternating
 " Plug 'sainnhe/everforest'
@@ -696,11 +696,6 @@ let g:rooter_manual_only = 1
 let g:rooter_cd_cmd = 'tcd'
 let g:rooter_change_directory_for_non_project_files = 'current'
 let g:rooter_patterns = ['.git', 'node_modules', 'Makefile']
-" }}}
-
-" vim-easy-align {{{
-nmap gl <Plug>(EasyAlign)
-xmap gl <Plug>(EasyAlign)
 " }}}
 
 " vimwiki {{{
