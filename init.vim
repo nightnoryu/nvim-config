@@ -261,52 +261,52 @@ set conceallevel=0
 
 " Mappings {{{
 " Disable mouse wheel pasting
-nmap <MiddleMouse> <nop>
-imap <MiddleMouse> <nop>
+nmap <silent> <MiddleMouse> <nop>
+imap <silent> <MiddleMouse> <nop>
 " Disable Ex mode
 nnoremap <silent> Q <nop>
 " Change and delete to blackhole register
-nnoremap c "_c
-vnoremap c "_c
-nnoremap C "_C
-nnoremap x "_x
-vnoremap x "_x
-nnoremap X "_X
+nnoremap <silent> c "_c
+vnoremap <silent> c "_c
+nnoremap <silent> C "_C
+nnoremap <silent> x "_x
+vnoremap <silent> x "_x
+nnoremap <silent> X "_X
 " Intuitive yank (like D)
-nnoremap Y y$
+nnoremap <silent> Y y$
 " Intuitive replace
-vnoremap p pgvy
+vnoremap <silent> p pgvy
 " Keep the selection after indenting
-vnoremap < <gv
-vnoremap > >gv
+vnoremap <silent> < <gv
+vnoremap <silent> > >gv
 " Center the screen on certain actions in order not to get lost
-nnoremap n nzzzv
-nnoremap N Nzzzv
-nnoremap J mzJ`z
+nnoremap <silent> n nzzzv
+nnoremap <silent> N Nzzzv
+nnoremap <silent> J mzJ`z
 " Moving text
 vnoremap <silent> J :m '>+1<CR>gv=gv
 vnoremap <silent> K :m '<-2<CR>gv=gv
 " Intuitive line movement (if count is not provided, move by displayed lines)
-nnoremap <expr> j v:count ? 'j' : 'gj'
-nnoremap <expr> k v:count ? 'k' : 'gk'
+nnoremap <silent> <expr> j v:count ? 'j' : 'gj'
+nnoremap <silent> <expr> k v:count ? 'k' : 'gk'
 " Faster movement between windows
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nnoremap <silent> <C-h> <C-w>h
+nnoremap <silent> <C-j> <C-w>j
+nnoremap <silent> <C-k> <C-w>k
+nnoremap <silent> <C-l> <C-w>l
 " Window resizing
 nnoremap <silent> <Right> :vertical resize +2<CR>
 nnoremap <silent> <Left> :vertical resize -2<CR>
 nnoremap <silent> <Up> :resize +2<CR>
 nnoremap <silent> <Down> :resize -2<CR>
 " Toggle 2 vertical and horizontal splits
-nnoremap <leader>th <C-w>t<C-w>K
-nnoremap <leader>tv <C-w>t<C-w>H
+nnoremap <silent> <leader>th <C-w>t<C-w>K
+nnoremap <silent> <leader>tv <C-w>t<C-w>H
 " Copy and paste using system clipboard
-nnoremap <leader>y "+y
-vnoremap <leader>y "+y
-nnoremap <leader>p "+p
-vnoremap <leader>p "+p
+nnoremap <silent> <leader>y "+y
+vnoremap <silent> <leader>y "+y
+nnoremap <silent> <leader>p "+p
+vnoremap <silent> <leader>p "+p
 " Some mappings for the buffers
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [b :bprevious<CR>
@@ -325,19 +325,19 @@ nnoremap <silent> [N :first<CR>
 " Toggle spell check
 nnoremap <silent> <leader>s :setlocal spell!<CR>
 " Comfortable editing in command mode
-cnoremap <C-A> <Home>
-cnoremap <C-E> <End>
-cnoremap <C-P> <Up>
-cnoremap <C-N> <Down>
+cnoremap <silent> <C-A> <Home>
+cnoremap <silent> <C-E> <End>
+cnoremap <silent> <C-P> <Up>
+cnoremap <silent> <C-N> <Down>
 " Get current directory in the command mode
-cnoremap %% <C-r>=expand('%:p:h')<CR>\
+cnoremap <silent> %% <C-r>=expand('%:p:h')<CR>\
 " Terminal mappings for Neovim
 if has('nvim')
-  tnoremap <Esc> <C-\><C-n>
-  tnoremap <C-h> <C-\><C-n><C-w>h
-  tnoremap <C-j> <C-\><C-n><C-w>j
-  tnoremap <C-k> <C-\><C-n><C-w>k
-  tnoremap <C-l> <C-\><C-n><C-w>l
+  tnoremap <silent> <Esc> <C-\><C-n>
+  tnoremap <silent> <C-h> <C-\><C-n><C-w>h
+  tnoremap <silent> <C-j> <C-\><C-n><C-w>j
+  tnoremap <silent> <C-k> <C-\><C-n><C-w>k
+  tnoremap <silent> <C-l> <C-\><C-n><C-w>l
 endif
 " }}}
 
@@ -345,7 +345,7 @@ endif
 set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
-inoremap <C-j> <C-^>
+inoremap <silent> <C-j> <C-^>
 autocmd settings InsertLeave * set iminsert=0
 " }}}
 
@@ -362,7 +362,7 @@ function! QuickfixToggle() abort
   copen
 endfunction
 " }}}
-nnoremap <silent> <leader>q :call QuickfixToggle()<CR>
+nnoremap <silent> <silent> <leader>q :call QuickfixToggle()<CR>
 
 " Virtual edit (cursor beyond EOL) {{{
 function! VirtualEditToggle() abort
@@ -493,7 +493,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 end
 
-local servers = { "clangd", "gopls", "tsserver", "jedi_language_server", "gopls" }
+local servers = { 'clangd', 'gopls', 'tsserver', 'jedi_language_server', 'gopls' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -551,6 +551,7 @@ local actions = require('telescope.actions')
 require('telescope').setup {
   defaults = {
     file_sorter = require('telescope.sorters').get_fzy_sorter,
+    prompt_prefix = '$ ',
 
     file_previewer = require('telescope.previewers').vim_buffer_cat.new,
     grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
@@ -558,7 +559,7 @@ require('telescope').setup {
 
     mappings = {
       i = {
-        ["<esc>"] = actions.close
+        ['<esc>'] = actions.close
       },
     },
 
@@ -583,9 +584,9 @@ nnoremap <silent> <leader>fh <cmd>Telescope help_tags<CR>
 
 " nvim-treesitter {{{
 lua << EOF
-require 'nvim-treesitter.install'.compilers = { "clang", "gcc" }
+require 'nvim-treesitter.install'.compilers = { 'clang', 'gcc' }
 require('nvim-treesitter.configs').setup {
-  ensure_installed = { 'python', 'c', 'cpp', 'lua', 'javascript', 'go' },
+  ensure_installed = { 'python', 'c', 'cpp', 'lua', 'javascript', 'go', 'latex' },
   ignore_install = {},
   highlight = {
     enable = true,
