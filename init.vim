@@ -753,14 +753,9 @@ augroup gitcommit " {{{
   autocmd FileType gitcommit setlocal spell
 augroup END " }}}
 
-augroup c " {{{
+augroup c_cpp_comments " {{{
   autocmd!
-  autocmd FileType c setlocal commentstring=//\ %s
-augroup END " }}}
-
-augroup cpp " {{{
-  autocmd!
-  autocmd FileType cpp omap ii <Esc>F<ci>
+  autocmd FileType cpp,c setlocal commentstring=//\ %s
 augroup END " }}}
 
 augroup python " {{{
