@@ -138,7 +138,7 @@ set wildignore+=*/var/*,*/vendor/*,*/public/build/*
 " Treat 'kebab' identifiers like a whole word
 set iskeyword+=-
 " Recursive :find in the current directory
-set path+=**
+set path=.,**
 " Less aggressive completion
 set completeopt=menuone,noinsert,noselect
 " Don't display completion messages
@@ -174,8 +174,6 @@ set autoread
 autocmd settings FocusGained,BufEnter * checktime
 " Auto-resize splits when the program window gets resized
 autocmd settings VimResized * wincmd=
-" Turn off paste when leaving insert mode
-autocmd settings InsertLeave * set nopaste
 " Automatically reload vimrc
 autocmd settings BufWritePost $MYVIMRC source $MYVIMRC
 " }}}
@@ -224,7 +222,7 @@ set ignorecase smartcase
 
 " Indentation {{{
 " Automatic indentation
-set autoindent
+set autoindent smartindent
 " Do not indent cases in switch statement and scope declarations in classes (C++)
 set cinoptions+=:0g0
 " Use existing indentation settings in this file for new lines
@@ -329,7 +327,7 @@ cnoremap <silent> <C-E> <End>
 cnoremap <silent> <C-P> <Up>
 cnoremap <silent> <C-N> <Down>
 " Get current directory in the command mode
-cnoremap <silent> %% <C-r>=expand('%:p:h')<CR>\
+cnoremap %% <C-r>=expand('%:p:h')<CR>\
 " Terminal mappings for Neovim
 if has('nvim')
   tnoremap <silent> <Esc> <C-\><C-n>
