@@ -322,10 +322,10 @@ nnoremap <silent> [N :first<CR>
 " Toggle spell check
 nnoremap <silent> <leader>s :setlocal spell!<CR>
 " Comfortable editing in command mode
-cnoremap <silent> <C-A> <Home>
-cnoremap <silent> <C-E> <End>
-cnoremap <silent> <C-P> <Up>
-cnoremap <silent> <C-N> <Down>
+cnoremap <C-A> <Home>
+cnoremap <C-E> <End>
+cnoremap <C-P> <Up>
+cnoremap <C-N> <Down>
 " Get current directory in the command mode
 cnoremap %% <C-r>=expand('%:p:h')<CR>\
 " Terminal mappings for Neovim
