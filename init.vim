@@ -67,6 +67,7 @@ Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
 
 " Some colorschemes for alternating
+" Plug 'Th3Whit3Wolf/one-nvim'
 " Plug 'sainnhe/everforest'
 " Plug 'arcticicestudio/nord-vim'
 " Plug 'sainnhe/gruvbox-material'
