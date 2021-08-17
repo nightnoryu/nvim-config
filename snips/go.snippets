@@ -1,9 +1,3 @@
-snippet iferr "Error check" b
-if err != nil {
-	${0:return err}
-}
-endsnippet
-
 snippet struct "Struct declaration" b
 type ${1:sneed} struct {
 	$0
@@ -24,6 +18,24 @@ endsnippet
 
 snippet meth "Method declaration" b
 func (${1:s} ${2:*sneed}) ${3:feed}($4) $5`p snip.rv = ' ' if t[3] != '' else ''`{
+	$0
+}
+endsnippet
+
+snippet err "Error check" b
+if err != nil {
+	${0:return err}
+}
+endsnippet
+
+snippet forr "For range" b
+for ${1:_}, ${2:sneed} := range ${3:feed} {
+	$0
+}
+endsnippet
+
+snippet test "Test function" b
+func Test$1(t *testing.T) {
 	$0
 }
 endsnippet

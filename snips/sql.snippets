@@ -1,0 +1,10 @@
+snippet db "Create database" b
+CREATE TABLE ${1:sneed}
+(
+    $0
+)
+  DEFAULT CHARACTER SET utf8mb4
+  COLLATE `utf8mb4_unicode_ci`
+  ENGINE = InnoDB
+;
+endsnippet

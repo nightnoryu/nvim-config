@@ -1,4 +1,4 @@
-snippet env "Environment comment" b
+snippet env3 "Python interpreter" b
 #!/usr/bin/env python3
 endsnippet
 
@@ -19,4 +19,19 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("\nUser interrupt", file=sys.stderr)
         sys.exit(1)
+endsnippet
+
+snippet class "Class" b
+class ${1:sneed}:
+    ${0:pass}
+endsnippet
+
+snippet def "Function" b
+def ${1:sneed}($2):
+    ${0:pass}
+endsnippet
+
+snippet defs "Method" b
+def ${1:sneed}(self`!p snip.rv = ', ' if t[2] != '' else ''`$2):
+    ${0:pass}
 endsnippet
