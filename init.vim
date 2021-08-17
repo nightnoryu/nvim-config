@@ -23,7 +23,7 @@ endif
 call plug#begin($VIMCONF . '/plugged')
 " Appearance
 Plug 'sainnhe/sonokai'
-Plug 'itchyny/lightline.vim'
+Plug 'hoob3rt/lualine.nvim'
 Plug 'mhinz/vim-startify'
 
 " LSP
@@ -429,38 +429,6 @@ command! Scratch
 let g:plug_window = 'noautocmd tabnew'
 " }}}
 
-" lightline {{{
-let g:lightline = {
-      \ 'colorscheme': 'sonokai',
-      \ 'mode_map': { 'c': 'NORMAL' },
-      \ 'active': {
-      \   'left': [ [ 'keymap', 'mode' ],
-      \             [ 'filename', 'gitbranch' ] ],
-      \ },
-      \ 'component_function': {
-      \   'keymap': 'LightlineKeymap',
-      \   'filename': 'LightlineFilename',
-      \   'gitbranch': 'FugitiveHead',
-      \ },
-      \ }
-
-function! LightlineKeymap() abort
-  return &iminsert == 1 ? 'RU' : ''
-endfunction
-
-function! LightlineFilename() abort
-  if &filetype ==# 'nerdtree'
-    return ''
-  endif
-  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
-  let modified = &modified ? ' +' : &modifiable ? '' : ' -'
-  return filename . modified
-endfunction
-
-call lightline#init()
-call lightline#colorscheme()
-" }}}
-
 " UltiSnips {{{
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
@@ -472,6 +440,7 @@ let g:UltiSnipsSnippetDirectories = [$VIMCONF . '/snips']
 
 " Lua configurations {{{
 lua << EOF
+require('lualine_config')
 require('lsp_config')
 require('telescope_config')
 require('treesitter_config')
