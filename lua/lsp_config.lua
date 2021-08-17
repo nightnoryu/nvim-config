@@ -19,6 +19,10 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'glR', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '[e',  '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']e',  '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+
+  vim.api.nvim_command([[
+  command! -buffer Format execute 'lua vim.lsp.buf.formatting()'
+  ]])
 end
 
 local servers = { 'clangd', 'gopls', 'tsserver', 'pylsp', 'gopls' }
@@ -30,7 +34,3 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
-
-vim.api.nvim_command([[
-command! Format execute 'lua vim.lsp.buf.formatting()'
-]])
