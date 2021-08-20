@@ -1,9 +1,10 @@
-local actions = require('telescope.actions')
 local telescope = require('telescope')
+local actions = require('telescope.actions')
+local sorters = require('telescope.sorters')
 
 telescope.setup {
   defaults = {
-    file_sorter = require('telescope.sorters').get_fzy_sorter,
+    file_sorter = sorters.get_fzy_sorter,
     prompt_prefix = '$ ',
 
     file_previewer = require('telescope.previewers').vim_buffer_cat.new,
@@ -12,15 +13,17 @@ telescope.setup {
 
     mappings = {
       i = {
-        ['<esc>'] = actions.close
+        ["<C-x>"] = false,
+        ["<C-s>"] = actions.select_horizontal,
       },
     },
 
     file_ignore_patterns = { '.git', 'node_modules', '__pycache__', '.idea', 'var', 'vendor' }
   },
+
   extensions = {
     fzy_native = {
-      override_generic_sorter = false,
+      override_generic_sorter = true,
       override_file_sorter = true
     }
   }
