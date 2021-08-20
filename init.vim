@@ -50,7 +50,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'wellle/targets.vim'
-Plug 'cohama/lexima.vim'
+Plug 'windwp/nvim-autopairs'
 Plug 'SirVer/ultisnips'
 Plug 'mattn/emmet-vim', { 'on': 'EmmetInstall' }
 
@@ -446,6 +446,7 @@ require('lsp_config')
 require('telescope_config')
 require('treesitter_config')
 require('compe_config')
+require('autopairs_config')
 EOF
 
 autocmd settings TextYankPost * silent! lua require'vim.highlight'.on_yank({ higroup = 'IncSearch', timeout = 50, on_visual = false })
