@@ -373,7 +373,7 @@ function! VirtualEditToggle() abort
     echo 'Virtual edit: OFF.'
   endif
 endfunction " }}}
-command! VirtualEditToggle call VirtualEditToggle()<CR>
+command! VirtualEditToggle call VirtualEditToggle()
 
 " Clean-up trailing whitespaces & newlines at EOF {{{
 function! CleanTrailings() abort
