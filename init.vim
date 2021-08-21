@@ -25,6 +25,7 @@ call plug#begin($VIMCONF . '/plugged')
 Plug 'sainnhe/sonokai'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'mhinz/vim-startify'
+Plug 'norcalli/nvim-colorizer.lua'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
@@ -67,13 +68,18 @@ Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
 
 " Some colorschemes for alternating
-" Plug 'navarasu/onedark.nvim'
-" Plug 'Th3Whit3Wolf/one-nvim'
 " Plug 'sainnhe/everforest'
+" Plug 'joshdick/onedark.vim'
 " Plug 'arcticicestudio/nord-vim'
 " Plug 'sainnhe/gruvbox-material'
 " Plug 'Jorengarenar/vim-darkness'
 " Plug 'ayu-theme/ayu-vim'
+
+" Neovim-specific
+" Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+" Plug 'navarasu/onedark.nvim'
+" Plug 'Th3Whit3Wolf/one-nvim'
+" Plug 'marko-cerovac/material.nvim'
 call plug#end()
 " }}}
 
@@ -448,6 +454,7 @@ require('treesitter_config')
 require('compe_config')
 require('autopairs_config')
 require('gitsigns_config')
+require('colorizer_config')
 EOF
 
 autocmd settings TextYankPost * silent! lua require'vim.highlight'.on_yank({ higroup = 'IncSearch', timeout = 50, on_visual = false })
