@@ -39,7 +39,7 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " Project management
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-rhubarb', { 'on': 'GBrowse' }
 Plug 'junegunn/gv.vim', { 'on': 'GV' }
 Plug 'airblade/vim-rooter', { 'on': 'Rooter' }
@@ -447,6 +447,7 @@ require('telescope_config')
 require('treesitter_config')
 require('compe_config')
 require('autopairs_config')
+require('gitsigns_config')
 EOF
 
 autocmd settings TextYankPost * silent! lua require'vim.highlight'.on_yank({ higroup = 'IncSearch', timeout = 50, on_visual = false })
@@ -502,17 +503,10 @@ let g:user_emmet_leader_key = '<C-z>'
 autocmd settings FileType html,css,pug EmmetInstall
 " }}}
 
-" Git (fugitive + gitgutter) {{{
+" Fugitive {{{
 nnoremap <silent> <leader>gg :Git<CR>
 nnoremap <silent> <leader>gh :diffget //2<CR>
 nnoremap <silent> <leader>gl :diffget //3<CR>
-
-let g:gitgutter_map_keys = 0
-nmap ]c <Plug>(GitGutterNextHunk)
-nmap [c <Plug>(GitGutterPrevHunk)
-nmap <leader>gs <Plug>(GitGutterStageHunk)
-nmap <leader>gu <Plug>(GitGutterUndoHunk)
-nmap <leader>gp <Plug>(GitGutterPreviewHunk)
 " }}}
 
 " startify {{{
