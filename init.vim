@@ -79,7 +79,6 @@ Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
 " Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 " Plug 'navarasu/onedark.nvim'
 " Plug 'Th3Whit3Wolf/one-nvim'
-" Plug 'marko-cerovac/material.nvim'
 call plug#end()
 " }}}
 
