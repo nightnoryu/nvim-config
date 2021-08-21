@@ -76,6 +76,7 @@ Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
 " Plug 'ayu-theme/ayu-vim'
 
 " Neovim-specific
+" Plug 'rafamadriz/neon'
 " Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 " Plug 'navarasu/onedark.nvim'
 " Plug 'Th3Whit3Wolf/one-nvim'
