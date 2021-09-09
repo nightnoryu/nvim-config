@@ -10,7 +10,7 @@ snippet header "Header guard" b
 #ifndef ${1:`!v toupper(expand("%:t:r"))`_H}
 #define $1
 
-$0
+${0:${VISUAL}}
 
 #endif /* #ifndef $1 */
 endsnippet
