@@ -1,5 +1,5 @@
-" Enable mouse only in normal mode
-set mouse=n
+" Enable mouse only in normal and visual mode
+set mouse=nv
 
 " Font
 if exists(':GuiFont')
