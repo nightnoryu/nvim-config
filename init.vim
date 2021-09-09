@@ -344,6 +344,7 @@ if has('nvim')
   tnoremap <silent> <C-k> <C-\><C-n><C-w>k
   tnoremap <silent> <C-l> <C-\><C-n><C-w>l
 endif
+nnoremap <F12> :!start cmd<CR>
 " }}}
 
 " Russian keymap {{{
