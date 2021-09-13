@@ -507,7 +507,7 @@ vmap gx <Plug>(openbrowser-smart-search)
 let g:emmet_html5 = 0
 let g:user_emmet_install_global = 0
 let g:user_emmet_leader_key = '<C-z>'
-autocmd settings FileType html,css,pug EmmetInstall
+autocmd settings FileType html,css,pug,javascriptreact EmmetInstall
 " }}}
 
 " vim-gitgutter {{{
