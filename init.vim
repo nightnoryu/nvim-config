@@ -555,6 +555,7 @@ let g:startify_commands = [
       \ {'n': ['Notes', 'VimwikiIndex']},
       \ {'u': ['Update plugins', 'PlugUpgrade | PlugClean! | PlugUpdate']},
       \ {'h': ['Quick reference', 'h quickref']},
+      \ {'p': ['Go to projects', 'cd D:\Documents\Projects']},
       \ ]
 let g:startify_skiplist = [
       \ '\\\.git\\',
