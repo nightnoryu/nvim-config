@@ -553,8 +553,7 @@ let g:startify_bookmarks = [
       \ ]
 let g:startify_commands = [
       \ {'n': ['Notes', 'VimwikiIndex']},
-      \ {'u': ['Update plugins', 'PlugClean! | PlugUpdate']},
-      \ {'p': ['Go to projects', 'cd D:\Documents\Projects']},
+      \ {'u': ['Update plugins', 'PlugUpgrade | PlugClean! | PlugUpdate']},
       \ {'h': ['Quick reference', 'h quickref']},
       \ ]
 let g:startify_skiplist = [
