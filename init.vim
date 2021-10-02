@@ -232,8 +232,8 @@ set ignorecase smartcase
 " Indentation {{{
 " Automatic indentation
 set autoindent smartindent
-" Do not indent cases in switch statement and scope declarations in classes (C++)
-set cinoptions+=:0g0
+" Indent cases in switch and indent scope declarations in classes (C++)
+set cinoptions=:2g0
 " Use existing indentation settings in this file for new lines
 set copyindent
 " Show tab as 4 spaces
