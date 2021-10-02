@@ -1,9 +1,13 @@
+# -------------------------- #
+# Headers & includes
+# -------------------------- #
+
 snippet #inc "Library include directive" b
-#include <${1:stdio.h}>
+#include <${1}>
 endsnippet
 
 snippet #incc "Local include directive" b
-#include "$1.h"
+#include "${1}"
 endsnippet
 
 snippet header "Header guard" b
@@ -15,15 +19,26 @@ ${0:${VISUAL}}
 #endif /* #ifndef $1 */
 endsnippet
 
+# -------------------------- #
+# Comments
+# -------------------------- #
+
 snippet mc "Multiline comment" b
 /*
  * $0
  */
 endsnippet
 
+snippet hc "Header comment" b
+// === ${0:${VISUAL}} ===
+endsnippet
+
+# -------------------------- #
+# Declarations & definitions
+# -------------------------- #
+
 snippet main "main()" b
-int
-main(void)
+int main(void)
 {
   $0
   return ${1:EXIT_SUCCESS};
@@ -31,8 +46,7 @@ main(void)
 endsnippet
 
 snippet maina "main(int argc, char **argv)" b
-int
-main(int argc, char **argv)
+int main(int argc, char **argv)
 {
   $0
   return ${1:EXIT_SUCCESS};
@@ -40,8 +54,7 @@ main(int argc, char **argv)
 endsnippet
 
 snippet fn "Function" b
-${2:void}
-${1:sneed}(${3:void})
+${2:void} ${1:sneed}(${3:void})
 {
   $0
 }

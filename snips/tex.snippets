@@ -1,8 +1,14 @@
 extends texmath
 
+global !p
+def fix_indent(snip):
+    vim.eval('feedkeys("\<c-f>")')
+endglobal
+
 # -------------------------- #
 # Document structure
 # -------------------------- #
+
 snippet doc "document base" b
 \\documentclass\{article\}
 
@@ -79,6 +85,7 @@ snippet beg "environment" b
 \\end\{$1\}
 endsnippet
 
+post_expand "fix_indent(snip)"
 snippet li "list item" b
 \\item $0
 endsnippet
