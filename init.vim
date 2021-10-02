@@ -434,6 +434,10 @@ command! Scratch
 " }}}
 
 " Plugins settings {{{
+" filetype {{{
+let g:did_load_filetypes = 1
+" }}}
+
 " vim-plug {{{
 let g:plug_window = 'noautocmd tabnew'
 " }}}
