@@ -168,8 +168,8 @@ endif
 set nrformats=hex
 " Enable directory-specific settings files
 set exrc
-" Disable dangerous settings (autocommands, shell and write commands) in the modeline and .exrc
-set secure
+" Enable dangerous settings (autocommands, shell and write commands) in the modeline and .exrc
+set nosecure
 " Allow backspace in insert mode
 set backspace=indent,eol,start
 " Keeps only one whitespace when joining lines
