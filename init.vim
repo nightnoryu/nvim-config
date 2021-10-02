@@ -65,6 +65,7 @@ Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
 Plug 'tyru/open-browser.vim', { 'on': '<Plug>(openbrowser-smart-search)' }
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
+Plug 'nathom/filetype.nvim'
 Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
 
 " Some colorschemes for alternating
