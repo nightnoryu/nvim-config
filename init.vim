@@ -411,12 +411,12 @@ endf
 command! -nargs=* ChangeTabstops call ChangeTabstops(<f-args>)
 
 " Empty registers {{{
-fun! EmptyRegisters()
-    let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
-    for r in regs
-        call setreg(r, [])
-    endfor
-endfun
+function! EmptyRegisters() abort
+  let regs = split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
+  for r in regs
+    call setreg(r, [])
+  endfor
+endfunction
 " }}}
 command! EmptyRegisters call EmptyRegisters()
 
