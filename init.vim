@@ -484,9 +484,7 @@ let NERDTreeShowHidden = 1
 let NERDTreeNaturalSort = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeAutoDeleteBuffer = 1
-let NERDTreeIgnore = [
-      \ '\.git$', 'node_modules$', '\.idea$'
-      \ ]
+let NERDTreeIgnore = [ '\.git$' ]
 let NERDTreeBookmarksFile = ''
 
 nnoremap <silent> <leader>nt :NERDTreeToggle<CR>
