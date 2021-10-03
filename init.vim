@@ -429,7 +429,9 @@ command! -range=% SoftWrap
 " Create or switch to the scratch buffer
 command! Scratch
       \ e scratch |
-      \ setlocal buftype=nofile bufhidden=hide noswapfile
+      \ setlocal buftype=nofile bufhidden=hide noswapfile |
+      \ nnoremap <silent> <buffer> ZZ :%y+<CR>ZQ
+command! VScratch vs | Scratch
 " }}}
 " }}}
 
