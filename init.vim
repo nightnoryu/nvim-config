@@ -369,7 +369,7 @@ function! QuickfixToggle() abort
   copen
 endfunction
 " }}}
-nnoremap <silent> <silent> <leader>q :call QuickfixToggle()<CR>
+nnoremap <silent> <leader>q :call QuickfixToggle()<CR>
 
 " Virtual edit (cursor beyond EOL) {{{
 function! VirtualEditToggle() abort
