@@ -166,10 +166,10 @@ if has('nvim')
 endif
 " Treat numbers as either decimal or hex when using CTRL-A|X
 set nrformats=hex
-" Enable directory-specific settings files
-set exrc
-" Enable dangerous settings (autocommands, shell and write commands) in the modeline and .exrc
-set nosecure
+" Disable directory-specific settings files
+set noexrc
+" Disable dangerous settings (autocommands, shell and write commands) in the modeline and .exrc
+set secure
 " Allow backspace in insert mode
 set backspace=indent,eol,start
 " Keeps only one whitespace when joining lines
