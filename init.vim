@@ -420,6 +420,13 @@ endfunction
 " }}}
 command! EmptyRegisters call EmptyRegisters()
 
+" Simple sort motion {{{
+function! Sort(type, ...)
+  '[,']sort
+endfunction
+nnoremap <silent> gs :set opfunc=Sort<CR>g@
+" }}}
+
 " Commands {{{
 " Soft-wrap the text for copying into the text processors
 command! -range=% SoftWrap
