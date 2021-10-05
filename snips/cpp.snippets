@@ -65,6 +65,31 @@ ${2:void} ${1:sneed}(${3})
 endsnippet
 
 # -------------------------- #
+# Control flow
+# -------------------------- #
+
+snippet while "While loop" b
+while ($1)
+{
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet for "For loop" b
+for ($1)
+{
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet switch "Switch-case" b
+switch ($1)
+{
+	$0
+}
+endsnippet
+
+# -------------------------- #
 # Utils
 # -------------------------- #
 
