@@ -288,7 +288,7 @@ vnoremap <silent> > >gv
 " Center the screen on certain actions in order not to get lost
 nnoremap <silent> n nzzzv
 nnoremap <silent> N Nzzzv
-nnoremap <silent> J mzJ`z
+nnoremap <silent> <expr> J v:count ? 'J' : 'mzJ`z'
 " Moving text
 vnoremap <silent> J :m '>+1<CR>gv=gv
 vnoremap <silent> K :m '<-2<CR>gv=gv
