@@ -2,7 +2,7 @@ extends texmath
 
 global !p
 def fix_indent(snip):
-    vim.eval('feedkeys("\<c-f>")')
+	vim.eval('feedkeys("\<c-f>")')
 endglobal
 
 # -------------------------- #
@@ -81,7 +81,7 @@ endsnippet
 # -------------------------- #
 snippet beg "environment" b
 \\begin\{$1\}
-  ${0:${VISUAL}}
+	${0:${VISUAL}}
 \\end\{$1\}
 endsnippet
 

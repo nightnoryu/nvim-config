@@ -6,15 +6,15 @@ endsnippet
 
 snippet aug "Augroup" b
 augroup ${1:sneed}
-  autocmd!
-  $0
+	autocmd!
+	$0
 augroup END
 endsnippet
 
 snippet augf "Augroup in a fold" b
 augroup ${1:sneed} " {{{
-  autocmd!
-  ${0:${VISUAL}}
+	autocmd!
+	${0:${VISUAL}}
 augroup END " }}}
 endsnippet
 
@@ -26,6 +26,6 @@ endsnippet
 
 snippet fun "Function" b
 function! ${1:sneed}($2) abort
-  $0
+	$0
 endfunction
 endsnippet

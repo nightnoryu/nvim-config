@@ -10,13 +10,8 @@ snippet #incc "Local include directive" b
 #include "${1}"
 endsnippet
 
-snippet header "Header guard" b
-#ifndef ${1:`!v toupper(expand("%:t:r"))`_H}
-#define $1
-
-${0:${VISUAL}}
-
-#endif /* #ifndef $1 */
+snippet po "Pragma once" b
+#pragma once
 endsnippet
 
 # -------------------------- #
@@ -41,31 +36,31 @@ snippet class "Class declaration" b
 class ${1:sneed}
 {
 public:
-  $0
+	$0
 
 private:
-  $2
+	$2
 };
 endsnippet
 
 snippet main "main()" b
 int main()
 {
-  $0
+	$0
 }
 endsnippet
 
 snippet maina "main(int argc, char **argv)" b
 int main(int argc, char **argv)
 {
-  $0
+	$0
 }
 endsnippet
 
 snippet fn "Function" b
 ${2:void} ${1:sneed}(${3})
 {
-  $0
+	$0
 }
 endsnippet
 

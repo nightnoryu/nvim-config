@@ -10,28 +10,28 @@ endsnippet
 
 snippet ifmain "If-main script base" b
 def main():
-    ${0:pass}
+	${0:pass}
 
 
 if __name__ == "__main__":
-    try:
-        main()
-    except KeyboardInterrupt:
-        print("\nUser interrupt", file=sys.stderr)
-        sys.exit(1)
+	try:
+		main()
+	except KeyboardInterrupt:
+		print("\nUser interrupt", file=sys.stderr)
+		sys.exit(1)
 endsnippet
 
 snippet class "Class" b
 class ${1:sneed}:
-    ${0:pass}
+	${0:pass}
 endsnippet
 
 snippet def "Function" b
 def ${1:sneed}($2):
-    ${0:pass}
+	${0:pass}
 endsnippet
 
 snippet defs "Method" b
 def ${1:sneed}(self`!p snip.rv = ', ' if t[2] != '' else ''`$2):
-    ${0:pass}
+	${0:pass}
 endsnippet
