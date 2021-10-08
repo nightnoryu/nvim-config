@@ -31,6 +31,10 @@ snippet "((\(\))|(\[\])|({}))d" "Dynamic brackets" rw
 \\left`!p snip.rv = ('\\' if match.group(1)[0] == '{' else '') + match.group(1)[0]` ${1:${VISUAL}} \\right`!p snip.rv = ('\\' if match.group(1)[1] == '}' else '') + match.group(1)[1]`
 endsnippet
 
+snippet abs "Dynamic sized bsolute value" w
+\left\lvert $1 \right\rvert
+endsnippet
+
 snippet // "Simple fraction" i
 \\frac\{${1:${VISUAL}}\}\{$2\}
 endsnippet
