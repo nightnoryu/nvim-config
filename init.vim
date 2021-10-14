@@ -147,7 +147,7 @@ set iskeyword+=-
 " Recursive :find in the current directory
 set path=.,**
 " Less aggressive completion
-set completeopt=menuone,noinsert,noselect
+set completeopt=menuone,noselect
 " Don't display completion messages
 set shortmess+=c
 " Don't jump to matching pairs
