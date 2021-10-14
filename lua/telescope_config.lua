@@ -13,18 +13,20 @@ telescope.setup({
     qflist_previewer = previewers.vim_buffer_qflist.new,
 
     vimgrep_arguments = {
-      "rg",
-      "--color=never",
-      "--no-heading",
-      "--with-filename",
-      "--line-number",
-      "--column",
-      "--smart-case",
-      "--hidden",
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case',
+      '--hidden',
+      '-g', '!.git',
+      '-g', '!yarn.lock',
     },
 
     layout_config = {
-      prompt_position = "bottom",
+      prompt_position = 'bottom',
       horizontal = {
         width_padding = 0.04,
         height_padding = 0.1,
@@ -39,8 +41,8 @@ telescope.setup({
 
     mappings = {
       i = {
-        ["<C-x>"] = false,
-        ["<C-s>"] = actions.select_horizontal,
+        ['<C-x>'] = false,
+        ['<C-s>'] = actions.select_horizontal,
       },
     },
 
