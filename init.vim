@@ -553,9 +553,9 @@ let g:startify_bookmarks = [
       \ ]
 let g:startify_commands = [
       \ {'n': ['Notes', 'VimwikiIndex']},
+      \ {'s': ['Scratch', 'Scratch']},
       \ {'u': ['Update plugins', 'PlugUpgrade | PlugClean! | PlugUpdate']},
       \ {'h': ['Quick reference', 'h quickref']},
-      \ {'p': ['Go to projects', 'cd D:\Documents\Projects']},
       \ ]
 let g:startify_skiplist = [
       \ '\\\.git\\',
