@@ -61,12 +61,9 @@ Plug 'vimwiki/vimwiki', { 'on': ['VimwikiIndex', 'VimwikiTabIndex'] }
 " Miscellaneous utilities
 Plug 'tpope/vim-dispatch', { 'on': ['Make', 'Dispatch'] }
 Plug 'junegunn/vim-easy-align', { 'on': ['EasyAlign', 'LiveEasyAlign'] }
-Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
-Plug 'tyru/open-browser.vim', { 'on': '<Plug>(openbrowser-smart-search)' }
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 Plug 'nathom/filetype.nvim'
-Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
 
 " Some colorschemes for alternating
 " Plug 'sainnhe/everforest'
@@ -508,11 +505,6 @@ endif
 " Writing (goyo + limelight) {{{
 autocmd! User GoyoEnter Limelight 0.7
 autocmd! User GoyoLeave Limelight!
-" }}}
-
-" open-browser {{{
-nmap gx <Plug>(openbrowser-smart-search)
-vmap gx <Plug>(openbrowser-smart-search)
 " }}}
 
 " emmet-vim {{{
