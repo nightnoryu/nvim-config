@@ -30,6 +30,7 @@ Plug 'norcalli/nvim-colorizer.lua'
 " LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
+Plug 'ray-x/lsp_signature.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
 " Searching
