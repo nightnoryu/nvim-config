@@ -22,7 +22,7 @@ endif
 
 call plug#begin($VIMCONF . '/plugged')
 " Appearance
-Plug 'sainnhe/sonokai'
+Plug 'sainnhe/everforest'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'mhinz/vim-startify'
 Plug 'norcalli/nvim-colorizer.lua'
@@ -67,18 +67,9 @@ Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 Plug 'nathom/filetype.nvim'
 
 " Some colorschemes for alternating
-" Plug 'sainnhe/everforest'
-" Plug 'joshdick/onedark.vim'
-" Plug 'arcticicestudio/nord-vim'
+" Plug 'sainnhe/sonokai'
 " Plug 'sainnhe/gruvbox-material'
-" Plug 'Jorengarenar/vim-darkness'
-" Plug 'ayu-theme/ayu-vim'
-
-" Neovim-specific
-" Plug 'rafamadriz/neon'
-" Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 " Plug 'navarasu/onedark.nvim'
-" Plug 'Th3Whit3Wolf/one-nvim'
 call plug#end()
 " }}}
 
@@ -192,8 +183,7 @@ if has('termguicolors')
   set termguicolors
 endif
 set background=dark
-let g:sonokai_style = 'atlantis'
-colorscheme sonokai
+colorscheme everforest
 " Line numbering
 set number relativenumber
 " Show cursor position
