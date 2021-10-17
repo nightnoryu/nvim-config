@@ -203,7 +203,7 @@ set noshowmode
 " Highlight current line
 set cursorline
 " Set the window's title to the current filename
-set title titlestring=%{expand(\'%\')}
+set title titlestring=%{expand(\'%:t\')}
 " }}}
 
 " Search {{{
