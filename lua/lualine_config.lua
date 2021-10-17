@@ -1,3 +1,11 @@
+local function keymap()
+  if vim.o.iminsert == 1 then
+    return [[RU]]
+  else
+    return [[]]
+  end
+end
+
 require('lualine').setup({
   options = {
     icons_enabled = false,
@@ -6,7 +14,7 @@ require('lualine').setup({
     section_separators = {},
   },
   sections = {
-    lualine_a = {'mode'},
+    lualine_a = {'mode', keymap},
     lualine_b = {'FugitiveHead'},
     lualine_c = {'filename'},
     lualine_x = {'encoding', 'fileformat', 'filetype'},
