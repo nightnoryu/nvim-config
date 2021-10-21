@@ -1,9 +1,13 @@
 local function keymap()
   if vim.o.iminsert == 1 then
-    return [[RU]]
+    return 'RU'
   else
-    return [[]]
+    return ''
   end
+end
+
+local function fileinfo()
+  return string.format('%s[%s]', vim.bo.fileencoding, vim.bo.fileformat)
 end
 
 require('lualine').setup({
@@ -17,7 +21,7 @@ require('lualine').setup({
     lualine_a = {'mode', keymap},
     lualine_b = {'FugitiveHead'},
     lualine_c = {'filename'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_x = {'filetype', fileinfo},
     lualine_y = {'progress'},
     lualine_z = {'location'},
   },
