@@ -64,6 +64,7 @@ Plug 'tpope/vim-dispatch', { 'on': ['Make', 'Dispatch'] }
 Plug 'junegunn/vim-easy-align', { 'on': ['EasyAlign', 'LiveEasyAlign'] }
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
+Plug 'tpope/vim-speeddating'
 Plug 'nathom/filetype.nvim'
 
 " Some colorschemes for alternating
