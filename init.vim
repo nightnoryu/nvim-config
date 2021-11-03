@@ -48,7 +48,7 @@ Plug 'airblade/vim-rooter', { 'on': 'Rooter' }
 Plug 'preservim/nerdtree', { 'on': ['NERDTree', 'NERDTreeToggle', 'NERDTreeFind'] }
 
 " Editing
-Plug 'tpope/vim-commentary'
+Plug 'numToStr/Comment.nvim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'wellle/targets.vim'
@@ -458,6 +458,7 @@ require('treesitter_config')
 require('compe_config')
 require('autopairs_config')
 require('colorizer_config')
+require('comment_config')
 EOF
 
 autocmd settings TextYankPost * silent! lua require'vim.highlight'.on_yank({ higroup = 'IncSearch', timeout = 50, on_visual = false })
