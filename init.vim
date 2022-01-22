@@ -542,7 +542,6 @@ let g:startify_lists = [
 let g:startify_bookmarks = [
       \ {'v': $MYVIMRC},
       \ {'m': $APPDATA . '\mpv\mpv.conf'},
-      \ {'j': $APPDATA . '\JPEGView\JPEGView.ini'},
       \ ]
 let g:startify_commands = [
       \ {'n': ['Notes', 'VimwikiIndex']},
