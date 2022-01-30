@@ -159,6 +159,8 @@ autocmd settings VimResized * wincmd=
 autocmd settings BufWritePost $MYVIMRC source $MYVIMRC
 " Close some windows using q
 autocmd settings FileType help,qf,fugitive,fugitiveblame nnoremap <buffer> <silent> q :close<CR>
+" Highlight region on yank
+autocmd settings TextYankPost * silent! lua require 'vim.highlight'.on_yank { higroup = 'IncSearch', timeout = 50, on_visual = false }
 " }}}
 
 " Appearance {{{
@@ -414,6 +416,10 @@ command! VScratch vs | Scratch
 " }}}
 
 " Plugins settings {{{
+lua << EOF
+require 'config.plugins'
+EOF
+
 " filetype {{{
 let g:did_load_filetypes = 1
 " }}}
@@ -429,20 +435,6 @@ let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsListSnippets = '<s-tab>'
 let g:UltiSnipsEditSplit = 'vertical'
 let g:UltiSnipsSnippetDirectories = [stdpath('config') . '/snips']
-" }}}
-
-" Lua configurations {{{
-lua << EOF
-require 'config.statusline'
-require 'config.lsp'
-require 'config.telescope'
-require 'config.treesitter'
-require 'config.completion'
-require 'config.autopairs'
-require 'config.comments'
-EOF
-
-autocmd settings TextYankPost * silent! lua require 'vim.highlight'.on_yank { higroup = 'IncSearch', timeout = 50, on_visual = false }
 " }}}
 
 " NERDTree {{{
