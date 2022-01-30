@@ -450,7 +450,7 @@ require 'config.autopairs'
 require 'config.comments'
 EOF
 
-autocmd settings TextYankPost * silent! lua require'vim.highlight'.on_yank({ higroup = 'IncSearch', timeout = 50, on_visual = false })
+autocmd settings TextYankPost * silent! lua require 'vim.highlight'.on_yank { higroup = 'IncSearch', timeout = 50, on_visual = false }
 " }}}
 
 " NERDTree {{{
