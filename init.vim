@@ -93,12 +93,8 @@ augroup END
 " Don't load netrw
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
-" Priority of end-of-line formats
-if has('win32')
-  set fileformats=dos,unix
-else
-  set fileformats=unix,dos
-endif
+" Priority of EOF formats
+set fileformats=unix,dos
 " Priority of encodings
 set fileencodings=utf-8,cp1251,cp866,koi8-r
 " Automatically hide buffer when it's unsaved (also allows to use :bufdo)
