@@ -168,6 +168,8 @@ autocmd settings FocusGained,BufEnter * checktime
 autocmd settings VimResized * wincmd=
 " Automatically reload vimrc
 autocmd settings BufWritePost $MYVIMRC source $MYVIMRC
+" Close some windows using q
+autocmd settings FileType help,qf,fugitive,fugitiveblame nnoremap <buffer> <silent> q :close<CR>
 " }}}
 
 " Appearance {{{
