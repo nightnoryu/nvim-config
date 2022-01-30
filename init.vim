@@ -18,7 +18,6 @@ call plug#begin(plugins_dir)
 Plug 'sainnhe/everforest'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'mhinz/vim-startify'
-Plug 'norcalli/nvim-colorizer.lua'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
@@ -35,7 +34,6 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 " Project management
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-rhubarb', { 'on': 'GBrowse' }
 Plug 'junegunn/gv.vim', { 'on': 'GV' }
 Plug 'airblade/vim-rooter', { 'on': 'Rooter' }
 Plug 'preservim/nerdtree', { 'on': ['NERDTree', 'NERDTreeToggle', 'NERDTreeFind'] }
@@ -47,17 +45,14 @@ Plug 'tpope/vim-repeat'
 Plug 'wellle/targets.vim'
 Plug 'windwp/nvim-autopairs'
 Plug 'SirVer/ultisnips'
-Plug 'mattn/emmet-vim', { 'on': 'EmmetInstall' }
 
 " Notes
 Plug 'vimwiki/vimwiki', { 'on': ['VimwikiIndex', 'VimwikiTabIndex'] }
+Plug 'tpope/vim-speeddating'
 
 " Miscellaneous utilities
 Plug 'tpope/vim-dispatch', { 'on': ['Make', 'Dispatch'] }
 Plug 'junegunn/vim-easy-align', { 'on': ['EasyAlign', 'LiveEasyAlign'] }
-Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
-Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
-Plug 'tpope/vim-speeddating'
 Plug 'nathom/filetype.nvim'
 
 " Some colorschemes for alternating
@@ -446,14 +441,13 @@ let g:UltiSnipsSnippetDirectories = [stdpath('config') . '/snips']
 
 " Lua configurations {{{
 lua << EOF
-require('lualine_config')
-require('lsp_config')
-require('telescope_config')
-require('treesitter_config')
-require('compe_config')
-require('autopairs_config')
-require('colorizer_config')
-require('comment_config')
+require 'config.statusline'
+require 'config.lsp'
+require 'config.telescope'
+require 'config.treesitter'
+require 'config.completion'
+require 'config.autopairs'
+require 'config.comments'
 EOF
 
 autocmd settings TextYankPost * silent! lua require'vim.highlight'.on_yank({ higroup = 'IncSearch', timeout = 50, on_visual = false })
@@ -488,18 +482,6 @@ nnoremap <silent> <leader>nF :NERDTreeFind<CR>
 if !exists('g:loaded_matchit')
   runtime! macros/matchit.vim
 endif
-" }}}
-
-" Writing (goyo + limelight) {{{
-autocmd! User GoyoEnter Limelight 0.7
-autocmd! User GoyoLeave Limelight!
-" }}}
-
-" emmet-vim {{{
-let g:emmet_html5 = 0
-let g:user_emmet_install_global = 0
-let g:user_emmet_leader_key = '<C-z>'
-autocmd settings FileType html,css,pug,javascriptreact EmmetInstall
 " }}}
 
 " vim-gitgutter {{{
