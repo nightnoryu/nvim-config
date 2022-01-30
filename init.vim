@@ -134,10 +134,8 @@ set splitbelow splitright
 set lazyredraw
 " Jump to the buffer window instead of switching if it's already opened in another window
 set switchbuf=useopen
-if has('nvim')
-  " Preview for :s command
-  set inccommand=nosplit
-endif
+" Preview for :s command
+set inccommand=nosplit
 " Treat numbers as either decimal or hex when using CTRL-A|X
 set nrformats=hex
 " Disable directory-specific settings files
@@ -312,14 +310,12 @@ cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 " Get current directory in the command mode
 cnoremap %% <C-r>=expand('%:p:h')<CR>\
-" Terminal mappings for Neovim
-if has('nvim')
-  tnoremap <silent> <Esc> <C-\><C-n>
-  tnoremap <silent> <C-h> <C-\><C-n><C-w>h
-  tnoremap <silent> <C-j> <C-\><C-n><C-w>j
-  tnoremap <silent> <C-k> <C-\><C-n><C-w>k
-  tnoremap <silent> <C-l> <C-\><C-n><C-w>l
-endif
+" More convenient terminal
+tnoremap <silent> <Esc> <C-\><C-n>
+tnoremap <silent> <C-h> <C-\><C-n><C-w>h
+tnoremap <silent> <C-j> <C-\><C-n><C-w>j
+tnoremap <silent> <C-k> <C-\><C-n><C-w>k
+tnoremap <silent> <C-l> <C-\><C-n><C-w>l
 nnoremap <F12> :!start cmd<CR>
 " }}}
 
