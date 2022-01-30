@@ -6,21 +6,14 @@
 "     (_)_/ |_|_| |_| |_|_|  \___|
 " by m3tro1d
 
-" Config location {{{
-if has('win32')
-  let $VIMCONF = $LOCALAPPDATA . '/nvim'
-else
-  let $VIMCONF = $HOME . '/.config/nvim'
-endif
-" }}}
-
 " Plugins {{{
 " Using https://github.com/junegunn/vim-plug
-if !isdirectory($VIMCONF . '/plugged')
-  call mkdir($VIMCONF . '/plugged', 'p')
+let plugins_dir = stdpath('config') . '/plugins'
+if !isdirectory(plugins_dir)
+  call mkdir(plugins_dir, 'p')
 endif
 
-call plug#begin($VIMCONF . '/plugged')
+call plug#begin(plugins_dir)
 " Appearance
 Plug 'sainnhe/everforest'
 Plug 'hoob3rt/lualine.nvim'
@@ -446,7 +439,7 @@ let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsListSnippets = '<s-tab>'
 let g:UltiSnipsEditSplit = 'vertical'
-let g:UltiSnipsSnippetDirectories = [$VIMCONF . '/snips']
+let g:UltiSnipsSnippetDirectories = [stdpath('config') . '/snips']
 " }}}
 
 " Lua configurations {{{
@@ -526,7 +519,6 @@ nnoremap <silent> <leader>gl :diffget //3<CR>
 " startify {{{
 let g:startify_fortune_use_unicode = 1
 
-let g:startify_session_dir = $VIMCONF . '/sessions'
 let g:startify_files_number = 5
 
 let g:startify_change_to_dir = 0
