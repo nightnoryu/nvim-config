@@ -35,7 +35,6 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/gv.vim', { 'on': 'GV' }
-Plug 'airblade/vim-rooter', { 'on': 'Rooter' }
 Plug 'preservim/nerdtree', { 'on': ['NERDTree', 'NERDTreeToggle', 'NERDTreeFind'] }
 
 " Editing
@@ -489,8 +488,8 @@ let g:startify_fortune_use_unicode = 1
 
 let g:startify_files_number = 5
 
-let g:startify_change_to_dir = 0
-let g:startify_change_to_vcs_root = 0
+let g:startify_change_to_dir = 1
+let g:startify_change_to_vcs_root = 1
 let g:startify_change_cmd = 'tcd'
 
 let g:startify_lists = [
@@ -514,13 +513,6 @@ let g:startify_skiplist = [
       \ 'runtime\\doc\\.*\.txt$',
       \ 'plugged\\.*\\doc\\.*\.txt$',
       \ ]
-" }}}
-
-" vim-rooter {{{
-let g:rooter_manual_only = 1
-let g:rooter_cd_cmd = 'tcd'
-let g:rooter_change_directory_for_non_project_files = 'current'
-let g:rooter_patterns = ['.git', 'node_modules', 'Makefile']
 " }}}
 
 " vimwiki {{{
