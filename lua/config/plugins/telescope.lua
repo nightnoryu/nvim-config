@@ -3,6 +3,8 @@ local actions = require 'telescope.actions'
 local sorters = require 'telescope.sorters'
 local previewers = require 'telescope.previewers'
 
+local noremaps = require 'config.utils'.noremaps
+
 telescope.setup {
   defaults = {
     file_sorter = sorters.get_fzy_sorter,
@@ -58,13 +60,8 @@ telescope.setup {
 }
 telescope.load_extension 'fzy_native'
 
-local opts = { noremap = true, silent = true }
-
-vim.api.nvim_set_keymap('n', '<C-p>', '<cmd>Telescope find_files<CR>', opts)
-
-vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>Telescope buffers<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>Telescope live_grep<CR>', opts)
-
-vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', opts)
-
-vim.api.nvim_set_keymap('n', '<leader>gb', '<cmd>Telescope git_branches<CR>', opts)
+noremaps('n', '<C-p>', '<cmd>Telescope find_files<CR>', opts)
+noremaps('n', '<leader>fb', '<cmd>Telescope buffers<CR>', opts)
+noremaps('n', '<leader>fg', '<cmd>Telescope live_grep<CR>', opts)
+noremaps('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', opts)
+noremaps('n', '<leader>gb', '<cmd>Telescope git_branches<CR>', opts)

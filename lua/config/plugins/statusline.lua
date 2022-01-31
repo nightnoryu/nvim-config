@@ -18,12 +18,12 @@ require 'lualine'.setup {
     section_separators = {},
   },
   sections = {
-    lualine_a = {'mode', keymap},
-    lualine_b = {'FugitiveHead'},
-    lualine_c = {'filename'},
-    lualine_x = {'filetype', fileinfo},
-    lualine_y = {'progress'},
-    lualine_z = {'location'},
+    lualine_a = { 'mode', keymap },
+    lualine_b = { 'FugitiveHead' },
+    lualine_c = { 'filename' },
+    lualine_x = { 'filetype', fileinfo },
+    lualine_y = { 'progress' },
+    lualine_z = { 'location' },
   },
   extensions = { 'quickfix', 'fugitive', 'nerdtree' },
 }
