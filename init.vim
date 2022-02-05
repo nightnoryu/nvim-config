@@ -33,7 +33,7 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " Project management
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'junegunn/gv.vim', { 'on': 'GV' }
 Plug 'preservim/nerdtree', { 'on': ['NERDTree', 'NERDTreeToggle', 'NERDTreeFind'] }
 
@@ -468,13 +468,13 @@ endif
 " }}}
 
 " vim-gitgutter {{{
-let g:gitgutter_map_keys = 0
-let g:gitgutter_show_msg_on_hunk_jumping = 0
-nmap ]c <Plug>(GitGutterNextHunk)
-nmap [c <Plug>(GitGutterPrevHunk)
-nmap <leader>gs <Plug>(GitGutterStageHunk)
-nmap <leader>gu <Plug>(GitGutterUndoHunk)
-nmap <leader>gp <Plug>(GitGutterPreviewHunk)
+" let g:gitgutter_map_keys = 0
+" let g:gitgutter_show_msg_on_hunk_jumping = 0
+" nmap ]c <Plug>(GitGutterNextHunk)
+" nmap [c <Plug>(GitGutterPrevHunk)
+" nmap <leader>gs <Plug>(GitGutterStageHunk)
+" nmap <leader>gu <Plug>(GitGutterUndoHunk)
+" nmap <leader>gp <Plug>(GitGutterPreviewHunk)
 " }}}
 
 " Fugitive {{{
