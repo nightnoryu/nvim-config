@@ -45,6 +45,8 @@ telescope.setup {
       i = {
         ['<C-x>'] = false,
         ['<C-s>'] = actions.select_horizontal,
+        ['<C-Down>'] = actions.cycle_history_next,
+        ['<C-Up>'] = actions.cycle_history_prev,
       },
     },
 
