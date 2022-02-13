@@ -78,7 +78,7 @@ scriptencoding utf-8
 filetype plugin indent on
 " Python path
 if has('win32')
-  let g:python3_host_prog = $LOCALAPPDATA . '\Programs\Python\Python39\python.exe'
+  let g:python3_host_prog = $LOCALAPPDATA . '\Programs\Python\Python310\python.exe'
 else
   let g:python3_host_prog = '/bin/python3'
 endif
