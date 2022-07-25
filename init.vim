@@ -313,7 +313,6 @@ tnoremap <silent> <C-h> <C-\><C-n><C-w>h
 tnoremap <silent> <C-j> <C-\><C-n><C-w>j
 tnoremap <silent> <C-k> <C-\><C-n><C-w>k
 tnoremap <silent> <C-l> <C-\><C-n><C-w>l
-nnoremap <F12> :!start cmd<CR>
 " }}}
 
 " Russian keymap {{{
