@@ -1,1 +1,0 @@
-SpeedDatingFormat %d.%m.%y

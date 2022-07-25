@@ -45,10 +45,6 @@ Plug 'wellle/targets.vim'
 Plug 'windwp/nvim-autopairs'
 Plug 'SirVer/ultisnips'
 
-" Notes
-Plug 'vimwiki/vimwiki', { 'on': ['VimwikiIndex', 'VimwikiTabIndex'] }
-Plug 'tpope/vim-speeddating'
-
 " Miscellaneous utilities
 Plug 'tpope/vim-dispatch', { 'on': ['Make', 'Dispatch'] }
 Plug 'junegunn/vim-easy-align', { 'on': ['EasyAlign', 'LiveEasyAlign'] }
@@ -503,7 +499,6 @@ let g:startify_bookmarks = [
       \ {'m': $APPDATA . '\mpv\mpv.conf'},
       \ ]
 let g:startify_commands = [
-      \ {'n': ['Notes', 'VimwikiIndex']},
       \ {'s': ['Scratch', 'Scratch']},
       \ {'u': ['Update plugins', 'PlugUpgrade | PlugClean! | PlugUpdate']},
       \ {'h': ['Quick reference', 'h quickref']},
@@ -513,25 +508,6 @@ let g:startify_skiplist = [
       \ 'runtime\\doc\\.*\.txt$',
       \ 'plugged\\.*\\doc\\.*\.txt$',
       \ ]
-" }}}
-
-" vimwiki {{{
-let g:vimwiki_key_mappings = {
-      \   'all_maps': 1,
-      \   'global': 0,
-      \   'headers': 1,
-      \   'text_objs': 1,
-      \   'table_format': 1,
-      \   'table_mappings': 1,
-      \   'lists': 1,
-      \   'links': 1,
-      \   'html': 0,
-      \   'mouse': 0,
-      \ }
-let g:vimwiki_list = [{ 'name': 'Notes',
-      \ 'path': 'D:\Documents\Notes\',
-      \ 'syntax': 'markdown', 'ext': '.wiki',
-      \ 'diary_rel_path': '_Diary\' }]
 " }}}
 " }}}
 
