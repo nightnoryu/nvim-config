@@ -16,6 +16,7 @@ require 'lualine'.setup {
     theme = 'everforest',
     component_separators = { left = '|', right = '|' },
     section_separators = {},
+    globalstatus = true,
   },
   sections = {
     lualine_a = { 'mode', keymap },
