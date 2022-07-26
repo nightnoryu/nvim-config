@@ -448,7 +448,7 @@ let g:startify_bookmarks = [
       \ ]
 let g:startify_commands = [
       \ {'s': ['Scratch', 'Scratch']},
-      \ {'u': ['Update plugins', 'PlugUpgrade | PlugClean! | PlugUpdate']},
+      \ {'u': ['Update plugins', 'PackerSync']},
       \ {'h': ['Quick reference', 'h quickref']},
       \ ]
 let g:startify_skiplist = [
