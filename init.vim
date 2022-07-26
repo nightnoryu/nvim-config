@@ -6,57 +6,6 @@
 "     (_)_/ |_|_| |_| |_|_|  \___|
 " by m3tro1d
 
-" Plugins {{{
-" Using https://github.com/junegunn/vim-plug
-let plugins_dir = stdpath('config') . '/plugins'
-if !isdirectory(plugins_dir)
-  call mkdir(plugins_dir, 'p')
-endif
-
-call plug#begin(plugins_dir)
-" Appearance
-Plug 'sainnhe/everforest'
-Plug 'hoob3rt/lualine.nvim'
-Plug 'mhinz/vim-startify'
-
-" LSP
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
-Plug 'ray-x/lsp_signature.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-
-" Searching
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzy-native.nvim'
-
-" Project management
-Plug 'tpope/vim-fugitive'
-Plug 'lewis6991/gitsigns.nvim'
-Plug 'junegunn/gv.vim', { 'on': 'GV' }
-Plug 'preservim/nerdtree', { 'on': ['NERDTree', 'NERDTreeToggle', 'NERDTreeFind'] }
-
-" Editing
-Plug 'numToStr/Comment.nvim'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'wellle/targets.vim'
-Plug 'windwp/nvim-autopairs'
-Plug 'SirVer/ultisnips'
-
-" Miscellaneous utilities
-Plug 'tpope/vim-dispatch', { 'on': ['Make', 'Dispatch'] }
-Plug 'junegunn/vim-easy-align', { 'on': ['EasyAlign', 'LiveEasyAlign'] }
-Plug 'nathom/filetype.nvim'
-
-" Some colorschemes for alternating
-" Plug 'sainnhe/sonokai'
-" Plug 'sainnhe/gruvbox-material'
-" Plug 'navarasu/onedark.nvim'
-call plug#end()
-" }}}
-
 " Basics {{{
 let mapleader=' '
 set spelllang=en_us,ru_ru
@@ -409,7 +358,7 @@ command! VScratch vs | Scratch
 " }}}
 " }}}
 
-" Plugins settings {{{
+" Plugins {{{
 lua << EOF
 require 'config.plugins'
 EOF
