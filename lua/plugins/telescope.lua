@@ -3,7 +3,7 @@ local actions = require 'telescope.actions'
 local sorters = require 'telescope.sorters'
 local previewers = require 'telescope.previewers'
 
-local noremaps = require 'config.utils'.noremaps
+local noremaps = require 'utils'.noremaps
 
 telescope.setup {
   defaults = {

@@ -10,14 +10,14 @@ require 'packer'.startup(function(use)
 
   -- Appearance
   use 'sainnhe/everforest'
-  use { 'hoob3rt/lualine.nvim', config = [[require 'config.plugins.statusline']] }
+  use { 'hoob3rt/lualine.nvim', config = [[require 'plugins.statusline']] }
   use 'mhinz/vim-startify'
 
   -- LSP
-  use { 'neovim/nvim-lspconfig', config = [[require 'config.plugins.lsp']] }
-  use { 'hrsh7th/nvim-compe', config = [[require 'config.plugins.completion']] }
+  use { 'neovim/nvim-lspconfig', config = [[require 'plugins.lsp']] }
+  use { 'hrsh7th/nvim-compe', config = [[require 'plugins.completion']] }
   use 'ray-x/lsp_signature.nvim'
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = [[require 'config.plugins.treesitter']] }
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = [[require 'plugins.treesitter']] }
 
   -- Searching
   use {
@@ -27,21 +27,21 @@ require 'packer'.startup(function(use)
       'nvim-lua/popup.nvim',
       'nvim-telescope/telescope-fzy-native.nvim',
     },
-    config = [[require 'config.plugins.telescope']]
+    config = [[require 'plugins.telescope']]
   }
 
   -- Project management
   use 'tpope/vim-fugitive'
-  use { 'lewis6991/gitsigns.nvim', config = [[require 'config.plugins.signs']] }
+  use { 'lewis6991/gitsigns.nvim', config = [[require 'plugins.signs']] }
   use { 'junegunn/gv.vim', opt = true, cmd = 'GV' }
   use { 'preservim/nerdtree', opt = true, cmd = {'NERDTree', 'NERDTreeToggle', 'NERDTreeFind'} }
 
   -- Editing
-  use { 'numToStr/Comment.nvim', config = [[require 'config.plugins.comments']] }
+  use { 'numToStr/Comment.nvim', config = [[require 'plugins.comments']] }
   use 'tpope/vim-surround'
   use 'tpope/vim-repeat'
   use 'wellle/targets.vim'
-  use { 'windwp/nvim-autopairs', config = [[require 'config.plugins.autopairs']] }
+  use { 'windwp/nvim-autopairs', config = [[require 'plugins.autopairs']] }
   use 'SirVer/ultisnips'
 
   -- Miscellaneous utilities

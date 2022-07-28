@@ -1,4 +1,4 @@
-local noremaps = require 'config.utils'.noremaps
+local noremaps = require 'utils'.noremaps
 
 require 'gitsigns'.setup {
   signs = {

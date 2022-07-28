@@ -360,7 +360,7 @@ command! VScratch vs | Scratch
 
 " Plugins {{{
 lua << EOF
-require 'config.plugins'
+require 'plugins'
 EOF
 
 " filetype {{{
