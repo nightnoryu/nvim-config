@@ -1,45 +1,45 @@
 # Heavily inspired by:
 # https://castel.dev/post/lecture-notes-1/
 
-snippet mk "Inline math" w
+snippet mk "inline math" w
 \\(${1:${VISUAL}}\\)
 endsnippet
 
-snippet dm "Display math" w
+snippet dm "math block" w
 \\[
 	$1
 \\]
 endsnippet
 
-snippet sub "Subscript" i
+snippet sub "subscript" i
 _\{$1\}
 endsnippet
 
-snippet sup "Superscript" i
+snippet sup "superscript" i
 ^\{$1\}
 endsnippet
 
-snippet sqrt "Square root" i
+snippet sqrt "square root" i
 \\sqrt\{$1\}
 endsnippet
 
-snippet "(\d|\w)root" "N-th root" rw
+snippet "(\d|\w)root" "n-th root" rw
 \\sqrt[`!p snip.rv = match.group(1)`]\{$1\}
 endsnippet
 
-snippet "((\(\))|(\[\])|({}))d" "Dynamic brackets" rw
+snippet "((\(\))|(\[\])|({}))d" "dynamic brackets" rw
 \\left`!p snip.rv = ('\\' if match.group(1)[0] == '{' else '') + match.group(1)[0]` ${1:${VISUAL}} \\right`!p snip.rv = ('\\' if match.group(1)[1] == '}' else '') + match.group(1)[1]`
 endsnippet
 
-snippet abs "Dynamic sized bsolute value" w
+snippet abs "dynamic abs" w
 \left\lvert $1 \right\rvert
 endsnippet
 
-snippet // "Simple fraction" i
+snippet // "fraction" i
 \\frac\{${1:${VISUAL}}\}\{$2\}
 endsnippet
 
-snippet "^.*\)/" "Fraction from parentheses" rw
+snippet "^.*\)/" "dynamic fraction" rw
 `!p
 stripped = match.string[:-1]
 depth = 0
@@ -56,34 +56,30 @@ snip.rv = stripped[:i] + "\\frac{" + stripped[i+1:-1] + "}"
 `\{$1\}$0
 endsnippet
 
-snippet lim "Limit" i
+snippet lim "limit" i
 \\lim_\{${1:x\\to\\infty}\}$2
 endsnippet
 
-snippet sum "Algebraic sum" i
+snippet sum "sum" i
 \\sum_\{${1:n=1}\}^\{${2:\\infty}\}$3
 endsnippet
 
-snippet int "Undefined integral" i
+snippet int "integral" i
 \\int $0
 endsnippet
 
-snippet intd "Defined integral" i
+snippet intd "definite integral" i
 \\int\\limits_\{$1\}^\{$2\} $0
 endsnippet
 
-snippet eval "Expression evaluation line" i
+snippet eval "expression evaluation" i
 \\left. $1 \\right|$0
 endsnippet
 
-snippet bb "Number set letter" i
+snippet bb "number set" i
 \\mathbb\{${1:Q}\}
 endsnippet
 
-snippet fr "Gothic letter" i
-\\mathfrak\{${1:F}\}
-endsnippet
-
-snippet txt "Text in equations" i
+snippet txt "text equation" i
 \\text\{${1:${VISUAL}}\}
 endsnippet

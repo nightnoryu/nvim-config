@@ -1,10 +1,5 @@
 extends texmath
 
-global !p
-def fix_indent(snip):
-	vim.eval('feedkeys("\<c-f>")')
-endglobal
-
 # -------------------------- #
 # Document structure
 # -------------------------- #
@@ -48,6 +43,7 @@ endsnippet
 # -------------------------- #
 # Text formatting
 # -------------------------- #
+
 snippet em "emph" w
 \\emph\{${1:${VISUAL}}\}
 endsnippet
@@ -79,13 +75,13 @@ endsnippet
 # -------------------------- #
 # Environments
 # -------------------------- #
+
 snippet beg "environment" b
 \\begin\{$1\}
 	${0:${VISUAL}}
 \\end\{$1\}
 endsnippet
 
-post_expand "fix_indent(snip)"
 snippet li "list item" b
 \\item $0
 endsnippet
