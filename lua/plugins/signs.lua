@@ -1,5 +1,3 @@
-local noremaps = require 'utils'.noremaps
-
 require 'gitsigns'.setup {
   signs = {
     add          = { hl = 'GitSignsAdd'   , text = '+', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn' },

@@ -1,4 +1,7 @@
+require 'plugins'
+
 -- Basics {{{
+vim.cmd [[language en_US]]
 vim.g.mapleader = ' '
 vim.opt.spelllang = 'en_us,ru_ru'
 -- Less command history
@@ -24,9 +27,6 @@ augroup settings
 autocmd!
 augroup END
 ]]
--- Don't load netrw
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
 -- Priority of EOF formats
 vim.opt.fileformats = 'unix,dos'
 -- Priority of encodings
@@ -351,97 +351,6 @@ command! Scratch
       \ nnoremap <silent> <buffer> ZZ :%y+<CR>ZQ
 command! VScratch vs | Scratch
 ]]
--- }}}
--- }}}
-
--- Plugins {{{
-require 'plugins'
-
--- filetype {{{
-vim.g.did_load_filetypes = 1
--- }}}
-
--- UltiSnips {{{
-vim.g.UltiSnipsExpandTrigger = '<tab>'
-vim.g.UltiSnipsJumpForwardTrigger = '<tab>'
-vim.g.UltiSnipsJumpBackwardTrigger = '<s-tab>'
-vim.g.UltiSnipsListSnippets = '<s-tab>'
-vim.g.UltiSnipsEditSplit = 'vertical'
-vim.g.UltiSnipsSnippetDirectories = { vim.fn.stdpath('config') .. '/snips' }
--- }}}
-
--- NERDTree {{{
--- Start NERDTree when Vim starts with a directory argument
-vim.cmd [[
-autocmd settings StdinReadPre * let s:std_in=1
-autocmd settings VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
-    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
-]]
-
--- Close NERDTree when it is the last buffer
-vim.cmd [[
-autocmd settings BufEnter * if (winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()) | q | endif
-]]
-
-vim.g.NERDTreeMapOpenSplit = 's'
-vim.g.NERDTreeMapOpenVSplit = 'v'
-vim.g.NERDTreeWinSize = 30
-vim.g.NERDTreeWinSizeMax = 50
-vim.g.NERDTreeShowHidden = 1
-vim.g.NERDTreeNaturalSort = 1
-vim.g.NERDTreeMinimalUI = 1
-vim.g.NERDTreeAutoDeleteBuffer = 1
-vim.g.NERDTreeIgnore = { '\\.git$' }
-vim.g.NERDTreeBookmarksFile = ''
-
-noremaps('n', '<leader>nt', ':NERDTreeToggle<CR>')
-noremaps('n', '<leader>nf', ':NERDTreeFocus<CR>')
-noremaps('n', '<leader>nF', ':NERDTreeFind<CR>')
--- }}}
-
--- matchit.vim {{{
-if vim.fn.exists('g:loaded_matchit') == 0 then
-  vim.cmd [[
-  runtime! macros/matchit.vim
-  ]]
-end
--- }}}
-
--- Fugitive {{{
-noremaps('n', '<leader>gg', ':Git<CR>')
-noremaps('n', '<leader>gh', ':diffget //2<CR>')
-noremaps('n', '<leader>gl', ':diffget //3<CR>')
--- }}}
-
--- startify {{{
-vim.g.startify_fortune_use_unicode = 1
-
-vim.g.startify_files_number = 5
-
-vim.g.startify_change_to_dir = 1
-vim.g.startify_change_to_vcs_root = 1
-vim.g.startify_change_cmd = 'tcd'
-
-vim.g.startify_lists = {
-  { type = 'bookmarks', header = {'   Bookmarks'}                  },
-  { type = 'commands',  header = {'   Commands'}                   },
-  { type = 'files',     header = {'   MRUs'}                       },
-  { type = 'dir',       header = {'   MRUs in current directory '} },
-}
-vim.g.startify_bookmarks = {
-      { v = vim.env.MYVIMRC },
-      { m = vim.env.APPDATA .. '\\mpv\\mpv.conf' },
-}
-vim.g.startify_commands = {
-  { s = { 'Scratch', 'Scratch' } },
-  { u = { 'Update plugins', 'PackerSync' } },
-  { h = { 'Quick reference', 'h quickref' } },
-}
-vim.g.startify_skiplist = {
-  '\\\\\\.git\\\\',
-  'runtime\\\\doc\\\\.*\\.txt$',
-  'plugged\\\\.*\\\\doc\\\\.*\\.txt$',
-}
 -- }}}
 -- }}}
 

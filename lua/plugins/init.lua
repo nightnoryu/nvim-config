@@ -11,7 +11,7 @@ require 'packer'.startup(function(use)
   -- Appearance
   use 'sainnhe/sonokai'
   use { 'hoob3rt/lualine.nvim', config = [[require 'plugins.statusline']] }
-  use 'mhinz/vim-startify'
+  use { 'mhinz/vim-startify', config = [[require 'plugins.startify']] }
 
   -- LSP
   use { 'neovim/nvim-lspconfig', config = [[require 'plugins.lsp']] }
@@ -31,25 +31,43 @@ require 'packer'.startup(function(use)
   }
 
   -- Project management
-  use 'tpope/vim-fugitive'
+  use { 'tpope/vim-fugitive', config = [[require 'plugins.fugitive']] }
   use { 'lewis6991/gitsigns.nvim', config = [[require 'plugins.signs']] }
   use { 'junegunn/gv.vim', opt = true, cmd = 'GV' }
-  use { 'preservim/nerdtree', opt = true, cmd = {'NERDTree', 'NERDTreeToggle', 'NERDTreeFind'} }
+  use {
+    'preservim/nerdtree',
+    cmd = {'NERDTree', 'NERDTreeToggle', 'NERDTreeFind'},
+    setup = [[require 'plugins.nerdtree']]
+  }
 
   -- Editing
   use { 'numToStr/Comment.nvim', config = [[require 'plugins.comments']] }
-  use 'tpope/vim-surround'
-  use 'tpope/vim-repeat'
+  use {
+    'tpope/vim-surround',
+    requires = {
+      'tpope/vim-repeat'
+    }
+  }
   use 'wellle/targets.vim'
   use { 'windwp/nvim-autopairs', config = [[require 'plugins.autopairs']] }
-  use 'SirVer/ultisnips'
+  use { 'SirVer/ultisnips', config = [[require 'plugins.snippets']] }
 
   -- Miscellaneous utilities
   use { 'tpope/vim-dispatch', opt = true, cmd = {'Make', 'Dispatch'} }
   use { 'junegunn/vim-easy-align', opt = true, cmd = {'EasyAlign', 'LiveEasyAlign'} }
-  use 'nathom/filetype.nvim'
+  use {
+    'nathom/filetype.nvim',
+    setup = function() vim.g.did_load_filetypes = 1 end
+  }
 
   if packer_bootstrap then
     require 'packer'.sync()
   end
 end)
+
+-- Load matchit
+if vim.fn.exists('g:loaded_matchit') == 0 then
+  vim.cmd [[
+  runtime! macros/matchit.vim
+  ]]
+end

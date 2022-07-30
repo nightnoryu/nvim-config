@@ -1,5 +1,5 @@
 require 'nvim-autopairs'.setup {
-  disable_filetype = { 'TelescopePrompt', 'vim' },
+  disable_filetype = { 'TelescopePrompt' },
   enable_moveright = true,
   enable_afterquote = false,
   enable_check_bracket_line = true,
