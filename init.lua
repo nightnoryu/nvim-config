@@ -141,6 +141,10 @@ vim.opt.cursorline = true
 -- Set the window's title to the current filename
 vim.opt.title = true
 vim.opt.titlestring = '%{expand(\'%:t\')}'
+vim.api.nvim_create_autocmd('UIEnter', {
+  once = true,
+  callback = function() require 'ginit' end
+})
 -- }}}
 
 -- Search {{{
