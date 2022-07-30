@@ -9,7 +9,7 @@ require 'packer'.startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- Appearance
-  use 'sainnhe/everforest'
+  use 'sainnhe/sonokai'
   use { 'hoob3rt/lualine.nvim', config = [[require 'plugins.statusline']] }
   use 'mhinz/vim-startify'
 
@@ -48,11 +48,6 @@ require 'packer'.startup(function(use)
   use { 'tpope/vim-dispatch', opt = true, cmd = {'Make', 'Dispatch'} }
   use { 'junegunn/vim-easy-align', opt = true, cmd = {'EasyAlign', 'LiveEasyAlign'} }
   use 'nathom/filetype.nvim'
-
-  -- Some colorschemes for alternating
-  -- use 'sainnhe/sonokai'
-  -- use 'sainnhe/gruvbox-material'
-  -- use 'navarasu/onedark.nvim'
 
   if packer_bootstrap then
     require 'packer'.sync()

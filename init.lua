@@ -116,8 +116,11 @@ if vim.fn.has('termguicolors') then
   vim.opt.termguicolors = true
 end
 vim.opt.background = 'dark'
+vim.g.sonokai_style = 'atlantis'
+vim.g.sonokai_better_performance = 1
+vim.g.sonokai_enable_italic = 0
 vim.cmd [[
-colorscheme everforest
+colorscheme sonokai
 ]]
 -- Line numbering
 vim.opt.number = true
@@ -271,7 +274,7 @@ vim.api.nvim_set_keymap('c', '<C-E>', '<End>', { noremap = true })
 vim.api.nvim_set_keymap('c', '<C-P>', '<Up>', { noremap = true })
 vim.api.nvim_set_keymap('c', '<C-N>', '<Down>', { noremap = true })
 -- Get current directory in the command mode
-noremaps('c', '%%', '<C-r>=expand(\'%:p:h\')<CR>\\')
+vim.api.nvim_set_keymap('c', '%%', '<C-r>=expand(\'%:p:h\')<CR>\\', { noremap = true })
 -- More convenient terminal
 noremaps('t', '<Esc>', '<C-\\><C-n>')
 noremaps('t', '<C-h>', '<C-\\><C-n><C-w>h')
