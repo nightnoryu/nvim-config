@@ -22,11 +22,7 @@ end
 
 -- Behavior {{{
 -- General autocommands group
-vim.cmd [[
-augroup settings
-autocmd!
-augroup END
-]]
+local settings = vim.api.nvim_create_augroup('settings', { clear = true })
 -- Priority of EOF formats
 vim.opt.fileformats = 'unix,dos'
 -- Priority of encodings
@@ -90,28 +86,35 @@ vim.opt.visualbell = false
 vim.opt.diffopt:append('internal,algorithm:patience')
 -- Reload file automatically if it was changed
 vim.opt.autoread = true
-vim.cmd [[
-autocmd settings FocusGained,BufEnter * checktime
-]]
+vim.api.nvim_create_autocmd({'FocusGained', 'BufEnter'}, {
+  group = settings,
+  command = 'checktime',
+})
 -- Auto-resize splits when the program window gets resized
-vim.cmd [[
-autocmd settings VimResized * wincmd=
-]]
+vim.api.nvim_create_autocmd('VimResized', {
+  group = settings,
+  command = 'wincmd=',
+})
 -- Close some windows using q
-vim.cmd [[
-autocmd settings FileType help,qf,fugitive,fugitiveblame nnoremap <buffer> <silent> q :close<CR>
-]]
+vim.api.nvim_create_autocmd('FileType', {
+  group = settings,
+  pattern = { 'help', 'qf', 'fugitive', 'fugitiveblame' },
+  callback = function(args)
+    vim.api.nvim_buf_set_keymap(args.buf, 'n', 'q', ':close<CR>', { noremap = true, silent = true })
+  end
+})
 -- Highlight region on yank
-vim.cmd [[
-autocmd settings TextYankPost * silent! lua require 'vim.highlight'.on_yank { higroup = 'IncSearch', timeout = 50, on_visual = false }
-]]
+vim.api.nvim_create_autocmd('TextYankPost', {
+  group = settings,
+  callback = function()
+    require 'vim.highlight'.on_yank { higroup = 'IncSearch', timeout = 50, on_visual = false }
+  end
+})
 -- }}}
 
 -- Appearance {{{
 -- Theme settings
-vim.cmd [[
-syntax enable
-]]
+vim.cmd 'syntax enable'
 if vim.fn.has('termguicolors') then
   vim.opt.termguicolors = true
 end
@@ -119,9 +122,7 @@ vim.opt.background = 'dark'
 vim.g.sonokai_style = 'atlantis'
 vim.g.sonokai_better_performance = 1
 vim.g.sonokai_enable_italic = 0
-vim.cmd [[
-colorscheme sonokai
-]]
+vim.cmd 'colorscheme sonokai'
 -- Line numbering
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -145,6 +146,7 @@ vim.opt.cursorline = true
 vim.opt.title = true
 vim.opt.titlestring = '%{expand(\'%:t\')}'
 vim.api.nvim_create_autocmd('UIEnter', {
+  group = settings,
   once = true,
   callback = function() require 'ginit' end
 })
@@ -288,9 +290,12 @@ vim.opt.keymap = 'russian-jcukenwin'
 vim.opt.iminsert = 0
 vim.opt.imsearch = 0
 noremaps('i', '<C-j>', '<C-^>')
-vim.cmd [[
-autocmd settings InsertLeave * set iminsert=0
-]]
+vim.api.nvim_create_autocmd('InsertLeave', {
+  group = settings,
+  callback = function()
+    vim.opt.iminsert = 0
+  end
+})
 -- }}}
 
 -- Some custom functions and commands {{{
@@ -355,25 +360,25 @@ command! VScratch vs | Scratch
 -- }}}
 
 -- General files settings {{{
-vim.cmd [[
-augroup formatting
-  autocmd!
-  " Turn off automatic text wrapping (both text and comments)
-  autocmd FileType * setlocal formatoptions-=tc
-  " Turn off automatic comment insertion
-  autocmd FileType * setlocal formatoptions-=ro
-  " Preserve short lines and don't break words when formatting
-  autocmd FileType * setlocal formatoptions+=w
-  " Recognize numbered lists when formating
-  autocmd FileType * setlocal formatoptions+=n
-  " Don't break a line after a one-letter word when formatting
-  autocmd FileType * setlocal formatoptions+=1
-  " Remove comment leader when joining lines with comments
-  autocmd FileType * setlocal formatoptions+=j
-  " Don't break lines at single spaces that follow periods
-  autocmd FileType * setlocal formatoptions+=p
-augroup END
-]]
+vim.api.nvim_create_autocmd('FileType', {
+  group = settings,
+  callback = function()
+  -- Turn off automatic text wrapping (both text and comments)
+  vim.cmd 'setlocal formatoptions-=tc'
+  -- Turn off automatic comment insertion
+  vim.cmd 'setlocal formatoptions-=ro'
+  -- Preserve short lines and don't break words when formatting
+  vim.opt_local.formatoptions:append('w')
+  -- Recognize numbered lists when formating
+  vim.opt_local.formatoptions:append('n')
+  -- Don't break a line after a one-letter word when formatting
+  vim.opt_local.formatoptions:append('1')
+  -- Remove comment leader when joining lines with comments
+  vim.opt_local.formatoptions:append('j')
+  -- Don't break lines at single spaces that follow periods
+  vim.opt_local.formatoptions:append('p')
+  end
+})
 
 -- LaTeX type
 vim.g.tex_flavor = 'latex'
