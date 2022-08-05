@@ -27,26 +27,23 @@ require 'packer'.startup(function(use)
       'nvim-lua/popup.nvim',
       'nvim-telescope/telescope-fzy-native.nvim',
     },
-    config = [[require 'plugins.telescope']]
+    config = [[require 'plugins.telescope']],
   }
 
   -- Project management
   use { 'tpope/vim-fugitive', config = [[require 'plugins.fugitive']] }
   use { 'lewis6991/gitsigns.nvim', config = [[require 'plugins.signs']] }
-  use { 'junegunn/gv.vim', opt = true, cmd = 'GV' }
   use {
     'preservim/nerdtree',
-    cmd = {'NERDTree', 'NERDTreeToggle', 'NERDTreeFind'},
-    setup = [[require 'plugins.nerdtree']]
+    cmd = { 'NERDTree', 'NERDTreeToggle', 'NERDTreeFind' },
+    setup = [[require 'plugins.nerdtree']],
   }
 
   -- Editing
   use { 'numToStr/Comment.nvim', config = [[require 'plugins.comments']] }
   use {
     'tpope/vim-surround',
-    requires = {
-      'tpope/vim-repeat'
-    }
+    requires = 'tpope/vim-repeat',
   }
   use 'wellle/targets.vim'
   use { 'windwp/nvim-autopairs', config = [[require 'plugins.autopairs']] }
@@ -57,7 +54,9 @@ require 'packer'.startup(function(use)
   use { 'junegunn/vim-easy-align', opt = true, cmd = {'EasyAlign', 'LiveEasyAlign'} }
   use {
     'nathom/filetype.nvim',
-    setup = function() vim.g.did_load_filetypes = 1 end
+    setup = function()
+      vim.g.did_load_filetypes = 1
+    end,
   }
 
   if packer_bootstrap then
@@ -67,7 +66,5 @@ end)
 
 -- Load matchit
 if vim.fn.exists('g:loaded_matchit') == 0 then
-  vim.cmd [[
-  runtime! macros/matchit.vim
-  ]]
+  vim.cmd [[runtime! macros/matchit.vim]]
 end
