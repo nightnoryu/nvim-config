@@ -14,7 +14,6 @@ vim.g.startify_lists = {
 }
 vim.g.startify_bookmarks = {
       { v = vim.env.MYVIMRC },
-      { m = vim.env.APPDATA .. '\\mpv\\mpv.conf' },
 }
 vim.g.startify_commands = {
   { s = { 'Scratch', 'Scratch' } },
