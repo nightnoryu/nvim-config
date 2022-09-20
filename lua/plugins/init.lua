@@ -17,7 +17,6 @@ require 'packer'.startup(function(use)
   use { 'neovim/nvim-lspconfig', config = [[require 'plugins.lsp']] }
   use { 'hrsh7th/nvim-compe', config = [[require 'plugins.completion']] }
   use 'ray-x/lsp_signature.nvim'
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = [[require 'plugins.treesitter']] }
 
   -- Searching
   use {
