@@ -4,13 +4,6 @@ local noremaps = require 'utils'.noremaps
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- Start NERDTree when Vim starts with a directory argument
-vim.cmd [[
-autocmd settings StdinReadPre * let s:std_in=1
-autocmd settings VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
-    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
-]]
-
 -- Close NERDTree when it is the last buffer
 vim.cmd [[
 autocmd settings BufEnter * if (winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()) | q | endif
