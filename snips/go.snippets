@@ -1,0 +1,33 @@
+snippet p "package" b
+package $0
+endsnippet
+
+snippet struct "struct" b
+type $1 struct {
+	$0
+}
+endsnippet
+
+snippet int "interface" b
+type $1 interface {
+	$0
+}
+endsnippet
+
+snippet func "function" b
+func $1($2)$3 {
+	$0
+}
+endsnippet
+
+snippet meth "method" b
+func ($1) $2($3)$4 {
+	$0
+}
+endsnippet
+
+snippet err "if err != nil" b
+if err != nil {
+	${0:return err}
+}
+endsnippet
