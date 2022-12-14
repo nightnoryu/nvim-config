@@ -2,7 +2,7 @@ require 'plugins'
 
 -- Basics {{{
 vim.g.mapleader = ' '
-vim.opt.spelllang = 'en_us,ru_ru'
+vim.opt.spelllang = 'en_us'
 -- Less command history
 vim.opt.history = 500
 -- Compatibility settings
@@ -13,7 +13,7 @@ filetype plugin indent on
 ]]
 -- Python path
 if vim.fn.has('win32') == 1 then
-  vim.g.python3_host_prog = vim.env.LOCALAPPDATA .. '\\Programs\\Python\\Python310\\python.exe'
+  vim.g.python3_host_prog = vim.env.LOCALAPPDATA .. '\\Programs\\Python\\Python311\\python.exe'
 else
   vim.g.python3_host_prog = '/usr/bin/python3'
 end
