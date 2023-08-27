@@ -1,7 +1,6 @@
-require 'plugins'
+require('config')
 
 -- Basics {{{
-vim.g.mapleader = ' '
 vim.opt.spelllang = 'en_us'
 -- Less command history
 vim.opt.history = 500
@@ -113,15 +112,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- Appearance {{{
 -- Theme settings
-vim.cmd 'syntax enable'
-if vim.fn.has('termguicolors') then
-  vim.opt.termguicolors = true
-end
-vim.opt.background = 'dark'
-vim.g.sonokai_style = 'atlantis'
-vim.g.sonokai_better_performance = 1
-vim.g.sonokai_enable_italic = 0
-vim.cmd 'colorscheme sonokai'
 -- Line numbering
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -203,92 +193,10 @@ vim.opt.sidescrolloff = 1
 vim.opt.conceallevel = 0
 -- }}}
 
--- Mappings {{{
-local noremaps = require 'utils'.noremaps
--- Disable mouse wheel pasting
-vim.api.nvim_set_keymap('n', '<MiddleMouse>', '<nop>', { silent = true })
-vim.api.nvim_set_keymap('i', '<MiddleMouse>', '<nop>', { silent = true })
--- Disable Ex mode
-noremaps('n', 'Q', '<nop>')
--- Change and delete to blackhole register
-noremaps('n', 'c', '\"_c')
-noremaps('v', 'c', '\"_c')
-noremaps('n', 'C', '\"_C')
-noremaps('n', 'x', '\"_x')
-noremaps('v', 'x', '\"_x')
-noremaps('n', 'X', '\"_X')
--- Intuitive yank (like D)
-noremaps('n', 'Y', 'y$')
--- Intuitive replace
-noremaps('v', 'p', 'pgvy')
--- Keep the selection after indenting
-noremaps('v', '<', '<gv')
-noremaps('v', '>', '>gv')
--- Center the screen on certain actions in order not to get lost
-noremaps('n', 'n', 'nzzzv')
-noremaps('n', 'N', 'Nzzzv')
-vim.api.nvim_set_keymap('n', 'J', 'v:count ? \'J\' : \'mzJ`z\'', { noremap = true, silent = true, expr = true })
--- Moving text
-noremaps('v', 'J', ':m \'>+1<CR>gv=gv')
-noremaps('v', 'K', ':m \'<-2<CR>gv=gv')
--- Intuitive line movement (if count is not provided, move by displayed lines)
-vim.api.nvim_set_keymap('n', 'j', 'v:count ? \'j\' : \'gj\'', { noremap = true, silent = true, expr = true })
-vim.api.nvim_set_keymap('n', 'k', 'v:count ? \'k\' : \'gk\'', { noremap = true, silent = true, expr = true })
--- Faster movement between windows
-noremaps('n', '<C-h>', '<C-w>h')
-noremaps('n', '<C-j>', '<C-w>j')
-noremaps('n', '<C-k>', '<C-w>k')
-noremaps('n', '<C-l>', '<C-w>l')
--- Window resizing
-noremaps('n', '<Right>', ':vertical resize +2<CR>')
-noremaps('n', '<Left>', ':vertical resize -2<CR>')
-noremaps('n', '<Up>', ':resize +2<CR>')
-noremaps('n', '<Down>', ':resize -2<CR>')
--- Toggle 2 vertical and horizontal splits
-noremaps('n', '<leader>th', '<C-w>t<C-w>K')
-noremaps('n', '<leader>tv', '<C-w>t<C-w>H')
--- Copy and paste using system clipboard
-noremaps('n', '<leader>y', '\"+y')
-noremaps('v', '<leader>y', '\"+y')
-noremaps('n', '<leader>p', '\"+p')
-noremaps('v', '<leader>p', '\"+p')
--- Quickfix list navigation
-noremaps('n', ']q', ':cnext<CR>zzzv')
-noremaps('n', '[q', ':cprevious<CR>zzzv')
-noremaps('n', ']Q', ':clast<CR>zzzv')
-noremaps('n', '[Q', ':cfirst<CR>zzzv')
--- Buffers navigation
-noremaps('n', ']b', ':bnext<CR>')
-noremaps('n', '[b', ':bprevious<CR>')
-noremaps('n', ']B', ':blast<CR>')
-noremaps('n', '[B', ':bfirst<CR>')
--- Arguments navigation
-noremaps('n', ']n', ':next<CR>')
-noremaps('n', '[n', ':previous<CR>')
-noremaps('n', ']N', ':last<CR>')
-noremaps('n', '[N', ':first<CR>')
--- Toggle spell check
-noremaps('n', '<leader>s', ':setlocal spell!<CR>')
--- Comfortable editing in command mode
-vim.api.nvim_set_keymap('c', '<C-A>', '<Home>', { noremap = true })
-vim.api.nvim_set_keymap('c', '<C-E>', '<End>', { noremap = true })
-vim.api.nvim_set_keymap('c', '<C-P>', '<Up>', { noremap = true })
-vim.api.nvim_set_keymap('c', '<C-N>', '<Down>', { noremap = true })
--- Get current directory in the command mode
-vim.api.nvim_set_keymap('c', '%%', '<C-r>=expand(\'%:p:h\')<CR>\\', { noremap = true })
--- More convenient terminal
-noremaps('t', '<Esc>', '<C-\\><C-n>')
-noremaps('t', '<C-h>', '<C-\\><C-n><C-w>h')
-noremaps('t', '<C-j>', '<C-\\><C-n><C-w>j')
-noremaps('t', '<C-k>', '<C-\\><C-n><C-w>k')
-noremaps('t', '<C-l>', '<C-\\><C-n><C-w>l')
--- }}}
-
 -- Russian keymap {{{
 vim.opt.keymap = 'russian-jcukenwin'
 vim.opt.iminsert = 0
 vim.opt.imsearch = 0
-noremaps('i', '<C-j>', '<C-^>')
 vim.api.nvim_create_autocmd('InsertLeave', {
   group = settings,
   callback = function()
@@ -378,9 +286,6 @@ vim.api.nvim_create_autocmd('FileType', {
   vim.opt_local.formatoptions:append('p')
   end
 })
-
--- LaTeX type
-vim.g.tex_flavor = 'latex'
 -- }}}
 
 -- vim:fdm=marker:
