@@ -48,3 +48,7 @@ vim.api.nvim_set_keymap('n', '<Down>', ':resize -2<CR>', { noremap = true, silen
 
 -- Language switching
 vim.api.nvim_set_keymap('i', '<C-j>', '<C-^>', {})
+
+-- Working with diffs
+vim.api.nvim_set_keymap('n', '<leader>gh', ':diffget //2<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>gl', ':diffget //3<CR>', { noremap = true, silent = true })
