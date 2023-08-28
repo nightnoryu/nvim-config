@@ -1,5 +1,5 @@
-local nvim_lsp = require 'lspconfig'
-local lsp_signature = require 'lsp_signature'
+local nvim_lsp = require('lspconfig')
+local lsp_signature = require('lsp_signature')
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -40,17 +40,15 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '[e',  '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']e',  '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 
-  vim.cmd [[
-    command! -buffer Format execute 'lua vim.lsp.buf.formatting()'
-  ]]
+  vim.cmd("command! -buffer Format execute 'lua vim.lsp.buf.formatting()'")
 end
 
-local servers = { 'tsserver', 'pylsp', 'gopls' }
+local servers = { 'gopls' }
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
+  nvim_lsp[lsp].setup({
     on_attach = on_attach,
     flags = {
       debounce_text_changes = 150,
     },
-  }
+  })
 end
