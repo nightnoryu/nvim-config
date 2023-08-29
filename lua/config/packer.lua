@@ -21,7 +21,6 @@ require('packer').startup(function(use)
     end,
   })
   use('hoob3rt/lualine.nvim')
-  use('mhinz/vim-startify')
 
   -- LSP
   use('neovim/nvim-lspconfig')
