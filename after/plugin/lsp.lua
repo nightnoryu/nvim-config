@@ -1,4 +1,5 @@
-local nvim_lsp = require('lspconfig')
+local lspconfig = require('lspconfig')
+local util = require('lspconfig.util')
 local lsp_signature = require('lsp_signature')
 
 local on_attach = function(client, bufnr)
@@ -40,15 +41,15 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '[e',  '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']e',  '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 
-  vim.cmd("command! -buffer Format execute 'lua vim.lsp.buf.formatting()'")
+  vim.cmd("command! -buffer Format execute 'lua vim.lsp.buf.format()'")
 end
 
-local servers = { 'gopls' }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup({
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    },
-  })
-end
+lspconfig.gopls.setup({
+  on_attach = on_attach,
+  cmd = { 'gopls' },
+  filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+  root_dir = util.root_pattern('go.work', 'go.mod', '.git'),
+  flags = {
+    debounce_text_changes = 150,
+  },
+})
