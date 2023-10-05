@@ -1,3 +1,4 @@
+vim.cmd('language en_US.utf-8')
 vim.opt.spelllang = 'en_us'
 vim.opt.history = 500
 
