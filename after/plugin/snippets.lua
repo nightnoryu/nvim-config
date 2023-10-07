@@ -1,6 +1,5 @@
 vim.g.UltiSnipsExpandTrigger = '<tab>'
-vim.g.UltiSnipsJumpForwardTrigger = '<tab>'
-vim.g.UltiSnipsJumpBackwardTrigger = '<s-tab>'
-vim.g.UltiSnipsListSnippets = '<s-tab>'
+vim.g.UltiSnipsJumpForwardTrigger = '<c-b>'
+vim.g.UltiSnipsJumpBackwardTrigger = '<c-z>'
 vim.g.UltiSnipsEditSplit = 'vertical'
 vim.g.UltiSnipsSnippetDirectories = { vim.fn.stdpath('config') .. '/snips' }
