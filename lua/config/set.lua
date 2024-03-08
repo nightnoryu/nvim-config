@@ -101,8 +101,8 @@ vim.opt.smartindent = true
 vim.opt.cinoptions = ':0g0'
 -- Use existing indentation settings in this file for new lines
 vim.opt.copyindent = true
--- Show tab as 4 spaces
-vim.opt.tabstop = 4
+-- Show tab as 2 spaces
+vim.opt.tabstop = 2
 -- White spaces instead of tabs by default
 vim.opt.expandtab = true
 -- Number of spaces shifted with <, >
