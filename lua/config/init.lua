@@ -6,7 +6,6 @@ vim.cmd('filetype plugin indent on')
 require('config.packer')
 require('config.set')
 require('config.remap')
-require('config.gui')
 
 -- Python path
 if vim.fn.has('win32') == 1 then
