@@ -24,7 +24,8 @@ require('packer').startup(function(use)
 
   -- LSP
   use('neovim/nvim-lspconfig')
-  use('hrsh7th/nvim-compe')
+  -- TODO: replace with https://github.com/hrsh7th/nvim-cmp
+  -- use('hrsh7th/nvim-compe')
   use('ray-x/lsp_signature.nvim')
 
   -- Searching

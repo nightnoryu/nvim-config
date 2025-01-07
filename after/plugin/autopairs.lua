@@ -7,9 +7,3 @@ require 'nvim-autopairs'.setup {
   map_bs = true,
   map_c_w = true,
 }
-
-require 'nvim-autopairs.completion.compe'.setup {
-  map_cr = true,
-  map_complete = true,
-  auto_select = false,
-}
